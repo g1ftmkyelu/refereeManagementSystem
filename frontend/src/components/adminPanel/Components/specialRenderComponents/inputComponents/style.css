@@ -1,0 +1,27 @@
+/* Add these styles to your CSS file */
+.slick-prev-icon,
+.slick-next-icon {
+  font-size: 24px; /* Adjust the font size as needed */
+  color: black;   /* Adjust the color as needed */
+}
+
+.slick-prev-icon:hover,
+.slick-next-icon:hover {
+  color: gray;    /* Adjust the hover color as needed */
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slick-prev-arrow {
+  left: -30px; /* Adjust the left position as needed */
+}
+
+.slick-next-arrow {
+  right: -30px; /* Adjust the right position as needed */
+  position: absolute;
+}

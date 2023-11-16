@@ -1,0 +1,55 @@
+/* Define custom properties for button styles */
+:root {
+    /* Button "Add" properties */
+    --button-add-bg: #4caf50; /* Background color for the "Add" button */
+    --button-add-color: white; /* Text color for the "Add" button */
+  
+    /* Button "View" properties */
+    --button-view-bg: #2196F3; /* Background color for the "View" button */
+    --button-view-color: white; /* Text color for the "View" button */
+  
+    /* Button "Edit" properties */
+    --button-edit-bg: #FF9800; /* Background color for the "Edit" button */
+    --button-edit-color: white; /* Text color for the "Edit" button */
+  
+    /* Button "Delete" properties */
+    --button-delete-bg: #f44336; /* Background color for the "Delete" button */
+    --button-delete-color: white; /* Text color for the "Delete" button */
+  }
+  
+  /* Define a base style for all CRUD buttons */
+  .crud-button {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Style for the "Add" button */
+  .crud-button.add {
+    background-color: var(--button-add-bg); /* Use the custom property for background color */
+    color: var(--button-add-color); /* Use the custom property for text color */
+  }
+  
+  /* Style for the "View" button */
+  .crud-button.view {
+    background-color: var(--button-view-bg); /* Use the custom property for background color */
+    color: var(--button-view-color); /* Use the custom property for text color */
+  }
+  
+  /* Style for the "Edit" button */
+  .crud-button.edit {
+    background-color: var(--button-edit-bg); /* Use the custom property for background color */
+    color: var(--button-edit-color); /* Use the custom property for text color */
+  }
+  
+  /* Style for the "Delete" button */
+  .crud-button.delete {
+    background-color: var(--button-delete-bg); /* Use the custom property for background color */
+    color: var(--button-delete-color); /* Use the custom property for text color */
+  }
+  
