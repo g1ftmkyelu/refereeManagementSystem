@@ -98,180 +98,6 @@ export const MatchCommisonerResources = [
             },
         ],
     },
-    {
-        path: "Add new match",
-        type: "wizard",
-        dataSource: "https://refs-29ss.onrender.com/matches",
-        icon: FaFolderPlus,
-        menu: { name: "Matches", icon: FaFootballBall },
-        steps: [
-            {
-                title: "Select Home Team",
-                fields: [
-                    {
-                        name: "homeTeam",
-                        type: "apiselect",
-                        displayKey:"name",
-                        placeholder: "home team",
-                        dataSource:"https://refs-29ss.onrender.com/teams?returnFields=name"
-                    },
-                ],
-            },
-            {
-                title: "Select Away Team",
-                fields: [
-                    {
-                        name: "awayTeam",
-                        type: "apiselect",
-                        displayKey:"name",
-                        placeholder: "home team",
-                        dataSource:"https://refs-29ss.onrender.com/teams?returnFields=name"
-                    },
-                ],
-            },
-            {
-                title: "Select Match date",
-                fields: [
-                    {
-                        name: "date",
-                        type: "date",
-                    },
-                ],
-            },
-
-            {
-                title: "Select Match Status",
-                fields: [
-                    {
-                        name: "status",
-                        type: "selectAlt",
-                        placeholder: "Select Role",
-                        data: [
-                            "Scheduled",
-                            "Live",
-                            "Completed",
-                            "Cancelled"],
-                    },
-                ],
-            },
-            {
-                title: "Enter match venue",
-                fields: [
-                    {
-                        name: "venue",
-                        type: "text",
-                        placeholder: "enter match venue",
-                    },
-                ],
-            },
-        ],
-        successMessage: "success!",
-        successPath: "all matches",
-    },
-    {
-        path: "all matches",
-        dataSource: "https://refs-29ss.onrender.com/matches",
-        icon: FaGolfBall,
-        sidePanel: false,
-        type: "crud",
-        view: true,
-        delete: true,
-
-        menu: { name: "Matches", icon: FaFootballBall },
-        schema: [
-
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            { name: "status", title: "Status", type: "text" },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-
-
-    {
-        path: "scheduled matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Scheduled",
-        icon: FaCalendarPlus,
-        sidePanel: false,
-        type: "crud",
-        view: true,
-        delete: true,
-
-        menu: { name: "Matches", icon: FaFootballBall },
-        schema: [
-
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            { name: "status", title: "Status", type: "text" },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-
-    {
-        path: "live matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Live",
-        icon: FaPlayCircle,    
-        sidePanel: false,
-        type: "crud",
-        view: true,
-        delete: true,
-
-        menu: { name: "Matches", icon: FaFootballBall },
-        schema: [
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            { name: "status", title: "Status", type: "text" },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-
-    {
-        path: "completed matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Completed",
-        icon: FaRegCalendarAlt,    
-        sidePanel: false,
-        type: "crud",
-        view: true,
-        delete: true,
-
-        menu: { name: "Matches", icon: FaFootballBall },
-        schema: [
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            { name: "status", title: "Status", type: "text" },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-
-    {
-        path: "cancelled matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Cancelled",
-        icon: FaRegTimesCircle,    
-        sidePanel: false,
-        type: "crud",
-        view: true,
-        delete: true,
-        menu: { name: "Matches", icon: FaFootballBall },
-        schema: [
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            { name: "status", title: "Status", type: "text" },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     {
         path: "Add new Team",
@@ -340,13 +166,6 @@ export const MatchCommisonerResources = [
     },
 
 
-
-
-
-
-
-
-
     {
         path: "teams",
         dataSource: "https://refs-29ss.onrender.com/teams",
@@ -366,6 +185,226 @@ export const MatchCommisonerResources = [
 
         ],
     },
+    {
+        path: "Add new match",
+        type: "wizard",
+        dataSource: "https://refs-29ss.onrender.com/matches",
+        icon: FaFolderPlus,
+        menu: { name: "Match Management", icon: FaFootballBall },
+        steps: [
+            {
+                title: "Select Home Team",
+                fields: [
+                    {
+                        name: "homeTeam",
+                        type: "apiselect",
+                        displayKey: "name",
+                        placeholder: "home team",
+                        dataSource: "https://refs-29ss.onrender.com/teams?returnFields=name"
+                    },
+                ],
+            },
+            {
+                title: "Select Away Team",
+                fields: [
+                    {
+                        name: "awayTeam",
+                        type: "apiselect",
+                        displayKey: "name",
+                        placeholder: "home team",
+                        dataSource: "https://refs-29ss.onrender.com/teams?returnFields=name"
+                    },
+                ],
+            },
+            {
+                title: "Select Match date",
+                fields: [
+                    {
+                        name: "date",
+                        type: "date",
+                    },
+                ],
+            },
+
+            {
+                title: "Select Match Status",
+                fields: [
+                    {
+                        name: "status",
+                        type: "selectAlt",
+                        placeholder: "Select Role",
+                        data: [
+                            "Scheduled",
+                            "Live",
+                            "Completed",
+                            "Cancelled"],
+                    },
+                ],
+            },
+            {
+                title: "Enter match venue",
+                fields: [
+                    {
+                        name: "venue",
+                        type: "text",
+                        placeholder: "enter match venue",
+                    },
+                ],
+            },
+        ],
+        successMessage: "success!",
+        successPath: "all matches",
+    },
+    {
+        path: "all matches",
+        dataSource: "https://refs-29ss.onrender.com/matches",
+        icon: FaGolfBall,
+        sidePanel: false,
+        type: "crud",
+        edit: true,
+        view: true,
+        delete: true,
+
+        menu: { name: "Match Management", icon: FaFootballBall },
+        schema: [
+
+            { name: "homeTeam", title: "Home Team", type: "text" },
+            { name: "awayTeam", title: "Away Team", type: "text" },
+            {
+                name: "status", title: "Status", type: "select",
+                options: [
+                    { label: "Scheduled", value: "Scheduled" },
+                    { label: "Live", value: "Live" },
+                    { label: "Completed", value: "Completed" },
+                    { label: "Cancelled", value: "Cencelled" }
+                ]
+            },
+            { name: "venue", title: "Venue", type: "text" },
+        ],
+    },
+
+
+    {
+        path: "scheduled matches",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Scheduled",
+        icon: FaCalendarPlus,
+        sidePanel: false,
+        type: "crud",
+        view: true,
+        edit: true,
+        delete: true,
+
+        menu: { name: "Match Management", icon: FaFootballBall },
+        schema: [
+
+            { name: "homeTeam", title: "Home Team", type: "text" },
+            { name: "awayTeam", title: "Away Team", type: "text" },
+            {
+                name: "status", title: "Status", type: "select",
+                options: [
+                    { label: "Scheduled", value: "Scheduled" },
+                    { label: "Live", value: "Live" },
+                    { label: "Completed", value: "Completed" },
+                    { label: "Cancelled", value: "Cencelled" }
+                ]
+            },
+            { name: "venue", title: "Venue", type: "text" },
+        ],
+    },
+
+    {
+        path: "live matches",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Live",
+        icon: FaPlayCircle,
+        sidePanel: false,
+        type: "crud",
+        edit: true,
+        view: true,
+        delete: true,
+
+        menu: { name: "Match Management", icon: FaFootballBall },
+        schema: [
+            { name: "homeTeam", title: "Home Team", type: "text" },
+            { name: "awayTeam", title: "Away Team", type: "text" },
+            {
+                name: "status", title: "Status", type: "select",
+                options: [
+                    { label: "Scheduled", value: "Scheduled" },
+                    { label: "Live", value: "Live" },
+                    { label: "Completed", value: "Completed" },
+                    { label: "Cancelled", value: "Cencelled" }
+                ]
+            },
+            { name: "venue", title: "Venue", type: "text" },
+        ],
+    },
+
+    {
+        path: "completed matches",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Completed",
+        icon: FaRegCalendarAlt,
+        sidePanel: false,
+        type: "crud",
+        view: true,
+        edit: true,
+        delete: true,
+
+        menu: { name: "Match Management", icon: FaFootballBall },
+        schema: [
+            { name: "homeTeam", title: "Home Team", type: "text" },
+            { name: "awayTeam", title: "Away Team", type: "text" },
+            {
+                name: "status", title: "Status", type: "select",
+                options: [
+                    { label: "Scheduled", value: "Scheduled" },
+                    { label: "Live", value: "Live" },
+                    { label: "Completed", value: "Completed" },
+                    { label: "Cancelled", value: "Cencelled" }
+                ]
+            },
+            { name: "venue", title: "Venue", type: "text" },
+        ],
+    },
+
+    {
+        path: "cancelled matches",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Cancelled",
+        icon: FaRegTimesCircle,
+        sidePanel: false,
+        type: "crud",
+        view: true,
+        edit: true,
+        delete: true,
+        menu: { name: "Match Management", icon: FaFootballBall },
+        schema: [
+            { name: "homeTeam", title: "Home Team", type: "text" },
+            { name: "awayTeam", title: "Away Team", type: "text" },
+            {
+                name: "status", title: "Status", type: "select",
+                options: [
+                    { label: "Scheduled", value: "Scheduled" },
+                    { label: "Live", value: "Live" },
+                    { label: "Completed", value: "Completed" },
+                    { label: "Cancelled", value: "Cencelled" }
+                ]
+            },
+            { name: "venue", title: "Venue", type: "text" },
+        ],
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
