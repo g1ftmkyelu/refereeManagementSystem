@@ -254,35 +254,31 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
                             case 'file':
                                 return (
                                     // ...
-                                    <div className="border p-4 rounded-md shadow-md flex flex-col items-center">
+                                    <div className="border p-4 rounded-md w-full shadow-md flex flex-col items-center">
                                         {/* Your form fields */}
-                                        <div key={name} className="flex flex-col items-center mb-4">
+                                        <div key={name} className="flex flex-col w-full items-center mb-4">
                                             <label className="form-label text-xl font-bold mb-2" htmlFor={name}>
                                                 {title}
                                             </label>
                                             {updateMode ? (
-                                                <div className="mt-2">
-                                                    <label
-                                                        htmlFor={name}
-                                                        className="cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-md inline-block"
-                                                    >
-                                                        Choose File
-                                                    </label>
+                                                <div className="mt-2 w-full">
+                                                    <label className='form-label' htmlFor={name}>{title}</label><br></br>
                                                     <input
-                                                        type="file"
+                                                        type="url"
                                                         id={name}
                                                         name={name}
+                                                        placeholder='paste image url here...'
                                                         onChange={(e) => handleInputChange(e, name)}
-                                                        className="hidden"
+                                                        className={'p-3 m5 bg-gray-300 rounded-md w-full'}
                                                         required
                                                     />
                                                 </div>
                                             ) : (
                                                 <div className="mt-2">
                                                     <img
-                                                        src={formData[name] || 'https://www.seekpng.com/png/small/143-1435868_headshot-silhouette-person-placeholder.png'}
+                                                        src={formData[name] || 'https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png'}
                                                         alt={title}
-                                                        className="w-auto h-auto rounded-md"
+                                                        className="w-72 h-72 rounded-md"
                                                     />
                                                 </div>
                                             )}
@@ -294,7 +290,7 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
                                             {updateMode ? (
                                                 <>
                                                     <RiImageAddFill className="mr-2" />
-                                                    <span>Display</span>
+                                                    <span>Display Image</span>
                                                 </>
                                             ) : (
                                                 <>

@@ -8,7 +8,7 @@ import { useUpdateResource } from '../../utils/getAPI';
 import axios from 'axios'; 
 import { getToken, removeToken } from '../../utils/helperFunctions';
 const api = axios.create({
-    baseURL: 'https://ehs-server.onrender.com', // Replace with your API base URL
+    baseURL: 'http://localhost:3030', // Replace with your API base URL
   });
 
 const Singleton = ({ rdata }) => {

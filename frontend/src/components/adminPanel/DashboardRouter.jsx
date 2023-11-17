@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ResourceRender from "./Components/coreComponents/ResourceRender";
-import Navbar from "./Components/coreComponents/Navbar";
 import SideNav from "./Components/coreComponents/SideNav"
 import NotFound from "./Components/utilityComponents/NotFound";
 import LoginPage from "./UIs/loginPage";

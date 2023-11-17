@@ -41,7 +41,7 @@ export const HospitalAdminResources = [
             title: "admin",
             path: "users",
             icon: BiSolidGroup,
-            dataSource: "https://ehs-server.onrender.com/users/count?role=admin",
+            dataSource: "http://localhost:3030/users/count?role=admin",
             dataType: "count",
             color: "orange",
             seeMore: true,
@@ -55,7 +55,7 @@ export const HospitalAdminResources = [
             title: "Doctors",
             path: "doctors",
             icon: FaUserMd,
-            dataSource: "https://ehs-server.onrender.com/users/count?role=doctor",
+            dataSource: "http://localhost:3030/users/count?role=doctor",
             dataType: "count",
             color: "blue",
             seeMore: true,
@@ -69,7 +69,7 @@ export const HospitalAdminResources = [
             title: "Patients",
             path: "patients",
             icon: BiUserPin,
-            dataSource: "https://ehs-server.onrender.com/users/count?role=patient",
+            dataSource: "http://localhost:3030/users/count?role=patient",
             dataType: "count",
             color: "green",
             seeMore: true,
@@ -88,7 +88,7 @@ export const HospitalAdminResources = [
   {
     path: "Add_New_User",
     type: "wizard",
-    dataSource: "https://ehs-server.onrender.com/users",
+    dataSource: "http://localhost:3030/users",
     icon: FaUserPlus,
     menu: { name: "Users", icon: FaUsers },
     steps:[
@@ -188,7 +188,7 @@ export const HospitalAdminResources = [
   },
   {
     path: "all users",
-    dataSource: "https://ehs-server.onrender.com/users",
+    dataSource: "http://localhost:3030/users",
     icon: FaUserNurse,
     sidePanel: false,
     type: "crud",
@@ -209,7 +209,7 @@ export const HospitalAdminResources = [
   },
   {
     path: "patients",
-    dataSource: "https://ehs-server.onrender.com/users",
+    dataSource: "http://localhost:3030/users",
     icon: FaFileMedical,
     sidePanel: false,
     type: "crud",
@@ -233,7 +233,7 @@ export const HospitalAdminResources = [
 
   {
     path: "doctors",
-    dataSource: "https://ehs-server.onrender.com/users",
+    dataSource: "http://localhost:3030/users",
     icon: FaStethoscope,
     sidePanel: false,
     type: "crud",
@@ -261,7 +261,7 @@ export const HospitalAdminResources = [
 
   {
     path: "medications",
-    dataSource: "https://ehs-server.onrender.com/medications",
+    dataSource: "http://localhost:3030/medications",
     icon: IoMdMedkit,
     sidePanel: false,
     type: "crud",
@@ -278,7 +278,7 @@ export const HospitalAdminResources = [
   },
   {
     path: "generic",
-    dataSource: "https://ehs-server.onrender.com/services",
+    dataSource: "http://localhost:3030/services",
     icon: BiChart,
     sidePanel: false,
     type: "report",
@@ -287,7 +287,7 @@ export const HospitalAdminResources = [
   },
   {
     path: "weekly",
-    dataSource: "https://ehs-server.onrender.com/services",
+    dataSource: "http://localhost:3030/services",
     icon: FaCalendarWeek,
     sidePanel: false,
     type: "report",
@@ -296,7 +296,7 @@ export const HospitalAdminResources = [
   },
   {
     path: "monthly",
-    dataSource: "https://ehs-server.onrender.com/services",
+    dataSource: "http://localhost:3030/services",
     icon: BsCalendar2Month,
     sidePanel: false,
     type: "report",
@@ -305,7 +305,7 @@ export const HospitalAdminResources = [
   },
   {
     path: "annual",
-    dataSource: "https://ehs-server.onrender.com/services",
+    dataSource: "http://localhost:3030/services",
     icon: FaCalendarDay,
     sidePanel: false,
     type: "report",
@@ -314,7 +314,7 @@ export const HospitalAdminResources = [
   },
   {
     path: "profile",
-    dataSource: "https://ehs-server.onrender.com/users",
+    dataSource: "http://localhost:3030/users",
    
     icon: FaUser,
     sidePanel: false,

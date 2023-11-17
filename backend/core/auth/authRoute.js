@@ -69,11 +69,11 @@ function setupAuth(resource) {
   //get user
 
   router.get("/user", auth, async (req, res) => {
-  const username = req.user;
+    const username = req.user;
     try {
-  
-        const User = await userModel.findOne({ username: username });
-        return res.status(200).json(User);
+
+      const User = await userModel.findOne({ username: username });
+      return res.status(200).json(User);
 
     } catch (error) {
       console.error(error.message);
@@ -101,22 +101,17 @@ function setupAuth(resource) {
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (passwordMatch) {
-        if (user.active) {
-          const accessToken = jwt.sign(
-            user.username,
-            process.env.ACCESS_TOKEN_SECRET
-          );
-          res.status(200).json({
-            message: "Login successful",
-            accessToken: accessToken,
-            user: user,
-          });
-        } else {
-          res.status(401).json({
-            message:
-              "You are not allowed to access this account. Contact system admin for more information",
-          });
-        }
+
+        const accessToken = jwt.sign(
+          user.username,
+          process.env.ACCESS_TOKEN_SECRET
+        );
+        res.status(200).json({
+          message: "Login successful",
+          accessToken: accessToken,
+          user: user,
+        });
+
       } else {
         res.status(401).json({ error: "Invalid password" });
       }

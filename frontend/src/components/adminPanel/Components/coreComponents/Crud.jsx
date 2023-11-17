@@ -52,77 +52,72 @@ const Crud = ({ rdata, stausCaption }) => {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading ||createResource.isLoading || editResource.isLoading || deleteResource.isLoading ? (
         <Loader />
-      ) : error ? (
+      ) : error || createResource.error || editResource.error || deleteResource.error? (
         <div>
           <p>Error: {error.message}</p>
         </div>
       ) : (
-        <>
-          {data.length === 0 ? (
-            <NoData/>
-          ) : (
-            <div className="mx-10">
-              <Table
-                {...{
-                  rdata,
-                  data,
-                  openCrudAddModal: () =>
-                    openCrudAddModal(
-                      setAction,
-                      setEdit,
-                      setSelectedItem,
-                      setIsAddModalOpen
-                    ),
-                  openCrudViewModal: (item) =>
-                    openCrudViewModal(item, setSelectedItem, setIsViewModalOpen),
-                  openCrudEditModal: (item) =>
-                    openCrudEditModal(
-                      item,
-                      setAction,
-                      setEdit,
-                      setSelectedItem,
-                      setIsEditModalOpen
-                    ),
-                  handleDelete: (itemId) =>
-                    handleDelete(itemId, deleteResource, refetch, toast),
-                  statusCaption: stausCaption,
-                  handleSwitchStatus: (item) =>
-                    handleSwitchStatus(
-                      item,
-                      editResource,
-                      closeViewModal,
-                      refetch,
-                      toast
-                    ),
-                }}
-              />
-            </div>
-          )}
-
-          <CrudModals
+        <div className="mx-10">
+          <Table
             {...{
-              isAddModalOpen,
-              setSelectedItem,
-              setIsAddModalOpen,
-              selectedItem,
-              action,
               rdata,
-              setDataFromGrandchild,
-              createResource,
-              refetch,
-              editResource,
-              isEditModalOpen,
-              setIsEditModalOpen,
-              isViewModalOpen,
-              setIsViewModalOpen,
+              data,
+              openCrudAddModal: () =>
+                openCrudAddModal(
+                  setAction,
+                  setEdit,
+                  setSelectedItem,
+                  setIsAddModalOpen
+                ),
+              openCrudViewModal: (item) =>
+                openCrudViewModal(item, setSelectedItem, setIsViewModalOpen),
+              openCrudEditModal: (item) =>
+                openCrudEditModal(
+                  item,
+                  setAction,
+                  setEdit,
+                  setSelectedItem,
+                  setIsEditModalOpen
+                ),
+              handleDelete: (itemId) =>
+                handleDelete(itemId, deleteResource, refetch, toast),
+              statusCaption: stausCaption,
+              handleSwitchStatus: (item) =>
+                handleSwitchStatus(
+                  item,
+                  editResource,
+                  closeViewModal,
+                  refetch,
+                  toast
+                ),
             }}
           />
-        </>
+        </div>
       )}
+  
+      <CrudModals
+        {...{
+          isAddModalOpen,
+          setSelectedItem,
+          setIsAddModalOpen,
+          selectedItem,
+          action,
+          rdata,
+          setDataFromGrandchild,
+          createResource,
+          refetch,
+          editResource,
+          isEditModalOpen,
+          setIsEditModalOpen,
+          isViewModalOpen,
+          setIsViewModalOpen,
+        }}
+      />
     </>
   );
+  
 };
 
 export default Crud;

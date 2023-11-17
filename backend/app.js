@@ -3,18 +3,24 @@ const express = require("express");
 const cors = require("cors");
 const { setupDynamicRoutes, setupAuth } = require("./core");
 const {
-
-  Users,
- 
+ Users,
+ Complaints,
+ MatchAssignments,
+ MatchReports,
+ Matches,
+ Teams
 } = require("./resources");
 
 //DB Connection
 require("./configs/dbConfig");
 
 const resources = [
-
   Users,
-
+  Complaints,
+  MatchAssignments,
+  MatchReports,
+  Matches,
+  Teams
 ];
 
 const app = express();

@@ -7,8 +7,8 @@ const viewModal = ({ isOpen, onRequestClose, selectedItem, schema }) => {
 
     const customStyles = {
         content: {
-            maxWidth: '400px',
-            maxHeight: '500px',
+            maxWidth: '500px',
+            maxHeight: '700px',
             margin: 'auto',
         },
         overlay: {

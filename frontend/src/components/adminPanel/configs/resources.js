@@ -34,7 +34,7 @@ import {
 export const resources = [
   {
     path: "appointments",
-    dataSource: "https://ehs-server.onrender.com/appointments",
+    dataSource: "http://localhost:3030/appointments",
     icon: CiRollingSuitcase,
     sidePanel: false,
     type: "crudTab",
@@ -71,7 +71,7 @@ export const resources = [
   },
   {
     path: "matches",
-    dataSource: "https://ehs-server.onrender.com/football-matches",
+    dataSource: "http://localhost:3030/football-matches",
     icon: FaRegFutbol,
     sidePanel: false,
     type: "crudTab",
@@ -109,7 +109,7 @@ export const resources = [
   },
   {
     path: "deliveries",
-    dataSource: "https://ehs-server.onrender.com/deliveries",
+    dataSource: "http://localhost:3030/deliveries",
     icon: CiDeliveryTruck,
     sidePanel: false,
     type: "crudTab",
@@ -146,7 +146,7 @@ export const resources = [
   },
   {
     path: "users",
-    dataSource: "https://ehs-server.onrender.com/users",
+    dataSource: "http://localhost:3030/users",
     icon: CiUser,
     sidePanel: false,
     type: "crud",
@@ -177,7 +177,7 @@ export const resources = [
 
   {
     path: "categories",
-    dataSource: "https://ehs-server.onrender.com/categories",
+    dataSource: "http://localhost:3030/categories",
     icon: CiBoxList,
     sidePanel: false,
     type: "crud",
@@ -199,7 +199,7 @@ export const resources = [
   // Resource 6: Customers
   {
     path: "customers",
-    dataSource: "https://ehs-server.onrender.com/customers",
+    dataSource: "http://localhost:3030/customers",
     icon: CiUser,
     sidePanel: false,
     type: "crud",
@@ -222,7 +222,7 @@ export const resources = [
   // Resource 8: Employees
   {
     path: "employees",
-    dataSource: "https://ehs-server.onrender.com/employees",
+    dataSource: "http://localhost:3030/employees",
     icon: CiUser,
     sidePanel: false,
     type: "crud",
@@ -256,7 +256,7 @@ export const resources = [
 
   {
     path: "projects",
-    dataSource: "https://ehs-server.onrender.com/projects",
+    dataSource: "http://localhost:3030/projects",
     icon: CiRollingSuitcase,
     sidePanel: true,
     type: "crud",
@@ -276,7 +276,7 @@ export const resources = [
   },
   {
     path: "tasks",
-    dataSource: "https://ehs-server.onrender.com/tasks",
+    dataSource: "http://localhost:3030/tasks",
     icon: CiMedicalClipboard,
     sidePanel: false,
     type: "crudGrid",
@@ -295,7 +295,7 @@ export const resources = [
   },
   {
     path: "events",
-    dataSource: "https://ehs-server.onrender.com/events",
+    dataSource: "http://localhost:3030/events",
     icon: CiCalendarDate,
     sidePanel: false,
     type: "crud",
@@ -315,7 +315,7 @@ export const resources = [
   },
   {
     path: "orders",
-    dataSource: "https://ehs-server.onrender.com/orders",
+    dataSource: "http://localhost:3030/orders",
     icon: CiShoppingBasket,
     sidePanel: false,
     type: "crudGrid",
@@ -334,7 +334,7 @@ export const resources = [
   },
   {
     path: "blog-posts",
-    dataSource: "https://ehs-server.onrender.com/blog-posts",
+    dataSource: "http://localhost:3030/blog-posts",
     icon: CiText,
     sidePanel: false,
     type: "crud",
@@ -355,7 +355,7 @@ export const resources = [
   },
   {
     path: "profile",
-    dataSource: "https://ehs-server.onrender.com/profile",
+    dataSource: "http://localhost:3030/profile",
     icon: CiUser,
     sidePanel: false,
     type: "singleton",

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const idSlice = createSlice({
   name: 'id',
-  initialState: 'admin', // Initial value
+  initialState: 'administrator', // Initial value
   reducers: {
     setId: (state, action) => {
       return action.payload;

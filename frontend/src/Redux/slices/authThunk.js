@@ -3,7 +3,7 @@ import { getToken, removeToken, setToken } from '../../components/adminPanel/uti
 import axios from 'axios'; 
 
 const api = axios.create({
-  baseURL: 'https://ehs-server.onrender.com', // Replace with your API base URL
+  baseURL: 'http://localhost:3030', // Replace with your API base URL
 });
 
 export const fetchUserData = createAsyncThunk('auth/fetchUserData', async (_, { rejectWithValue }) => {
