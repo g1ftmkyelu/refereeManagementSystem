@@ -110,8 +110,10 @@ export const MatchCommisonerResources = [
                 fields: [
                     {
                         name: "homeTeam",
-                        type: "text",
+                        type: "apiselect",
+                        displayKey:"name",
                         placeholder: "home team",
+                        dataSource:"https://refs-29ss.onrender.com/teams?returnFields=name"
                     },
                 ],
             },
@@ -120,8 +122,10 @@ export const MatchCommisonerResources = [
                 fields: [
                     {
                         name: "awayTeam",
-                        type: "text",
-                        placeholder: "Away Team",
+                        type: "apiselect",
+                        displayKey:"name",
+                        placeholder: "home team",
+                        dataSource:"https://refs-29ss.onrender.com/teams?returnFields=name"
                     },
                 ],
             },

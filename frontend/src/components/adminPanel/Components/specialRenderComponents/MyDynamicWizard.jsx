@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import SelectField from './inputComponents/SelectInput';
 import SelectFieldAlt from './inputComponents/selectField';
 import { MoonLoader } from "react-spinners";
+import ApiSelect from './inputComponents/apiSelect';
 
 
 
@@ -180,7 +181,16 @@ const DynamicWizard = ({ rdata }) => {
                   onChange={(value) => handleChange(field.name, value)}
                   dataSource={field.dataSource}
                 />
-              ) : field.type === 'textarea' ? (
+              ) : field.type === 'apiselect' ? (
+                  <ApiSelect
+                  key={field.name}
+                  title={steps[currentStep].title}
+                  value={formData[field.name]}
+                  onChange={(value) => handleChange(field.name, value)}
+                  displayModeKey={field.displaykey}
+                  dataSource={field.dataSource}
+                  />
+              ): field.type === 'textarea' ? (
                 <textarea
                   key={field.name}
                   placeholder={field.placeholder || ''}

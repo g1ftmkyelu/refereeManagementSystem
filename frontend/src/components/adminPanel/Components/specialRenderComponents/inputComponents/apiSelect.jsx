@@ -1,36 +1,30 @@
 import React from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { MoonLoader } from 'react-spinners';
+import { getToken } from '../../../utils/helperFunctions';
 
-const ApiSelect = ({ title, value, onChange, displayModeKey, endpoint }) => {
-  const { data: responseData, isLoading, isError } = useQuery(endpoint, async () => {
-    const response = await axios.get('YOUR_API_ENDPOINT');
-    return response.data;
+const ApiSelect = ({ title, value, onChange, dataSource }) => {
+  const token = getToken();
+
+  const { data: responseData, isLoading, isError } = useQuery(['data'], async () => {
+    try {
+      const response = await axios.get(dataSource, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response ? error.response.data : error.message);
+    }
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error fetching data</p>;
+  if (isLoading) return <MoonLoader color="#1400ff" />;
 
-  const renderOptions = () => {
-    return responseData.map((item, index) => (
-      <option key={index} value={getDisplayValue(item)}>
-        {getDisplayValue(item)}
-      </option>
-    ));
-  };
+  if (isError || !Array.isArray(responseData)) return <p>Error fetching data</p>;
 
-  const getDisplayValue = (item) => {
-    if (Array.isArray(displayModeKey)) {
-      // If displayModeKey is an array, combine multiple keys
-      return displayModeKey.map((key) => item[key]).join(' ');
-    } else if (displayModeKey && item.hasOwnProperty(displayModeKey)) {
-      // If displayModeKey is a single valid key, use it
-      return item[displayModeKey];
-    } else {
-      // If the key is not found or invalid, default to displaying the item itself
-      return JSON.stringify(item);
-    }
-  };
+  const extractedNames = responseData.map((item) => item.name);
 
   return (
     <select
@@ -39,7 +33,11 @@ const ApiSelect = ({ title, value, onChange, displayModeKey, endpoint }) => {
       className="border border-gray-300 p-3 w-full rounded-md mb-4"
     >
       <option value="">{title}</option>
-      {renderOptions()}
+      {extractedNames.map((name, index) => (
+        <option key={index} value={name}>
+          {name}
+        </option>
+      ))}
     </select>
   );
 };
