@@ -50,7 +50,7 @@ export const AdminResources = [
                         title: "administrators",
                         path: "administrators",
                         icon: BiSolidGroup,
-                        dataSource: "http://localhost:3030/users/count?role=administrator",
+                        dataSource: "https://refs-29ss.onrender.com/users/count?role=administrator",
                         dataType: "count",
                         color: "orange",
                         seeMore: true,
@@ -63,7 +63,7 @@ export const AdminResources = [
                         title: "Referees",
                         path: "referees",
                         icon: BiFootball,
-                        dataSource: "http://localhost:3030/users/count?role=referee",
+                        dataSource: "https://refs-29ss.onrender.com/users/count?role=referee",
                         dataType: "count",
                         color: "green",
                         seeMore: true,
@@ -76,7 +76,7 @@ export const AdminResources = [
                         title: "Assessors",
                         path: "assessors",
                         icon: FaUserMd,
-                        dataSource: "http://localhost:3030/users/count?role=assessor",
+                        dataSource: "https://refs-29ss.onrender.com/users/count?role=assessor",
                         dataType: "count",
                         color: "purple",
                         seeMore: true,
@@ -90,7 +90,7 @@ export const AdminResources = [
                         path: "allocation-officers",
                         icon: FaUserMd,
                         dataSource:
-                            "http://localhost:3030/users/count?role=allocationofficer",
+                            "https://refs-29ss.onrender.com/users/count?role=allocationofficer",
                         dataType: "count",
                         color: "blue",
                         seeMore: true,
@@ -104,7 +104,7 @@ export const AdminResources = [
                         path: "match-commissioner",
                         icon: FaUserMd,
                         dataSource:
-                            "http://localhost:3030/users/count?role=matchcommissioner",
+                            "https://refs-29ss.onrender.com/users/count?role=matchcommissioner",
                         dataType: "count",
                         color: "gray",
                         seeMore: true,
@@ -120,7 +120,7 @@ export const AdminResources = [
     {
         path: "Add_New_User",
         type: "wizard",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
         icon: FaUserPlus,
         menu: { name: "Users", icon: FaUsers },
         steps: [
@@ -218,7 +218,7 @@ export const AdminResources = [
     },
     {
         path: "all users",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
         icon: FaUserShield,
         sidePanel: false,
         type: "crud",
@@ -239,7 +239,7 @@ export const AdminResources = [
     },
     {
         path: "administrators",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
         icon: FaUser,
         sidePanel: false,
         type: "crud",
@@ -263,7 +263,7 @@ export const AdminResources = [
     },
     {
         path: "referees",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
         icon: BiFootball,
         sidePanel: false,
         type: "crud",
@@ -287,7 +287,7 @@ export const AdminResources = [
     },
     {
         path: "assessors",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
         icon: MdSearch,
         sidePanel: false,
         type: "crud",
@@ -314,7 +314,7 @@ export const AdminResources = [
 
     {
         path: "allocation-officers",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
         icon: MdPlaylistAddCheck,
         sidePanel: false,
         type: "crud",
@@ -340,7 +340,7 @@ export const AdminResources = [
 
     {
         path: "match-commissioner",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
         icon: MdSupervisorAccount,
         sidePanel: false,
         type: "crud",
@@ -366,7 +366,7 @@ export const AdminResources = [
 
     {
         path: "profile",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
 
         icon: FaUserCog,
         sidePanel: false,

@@ -5,7 +5,7 @@ import { FaUser, FaUserPlus } from 'react-icons/fa';
 const config=  {
     path: "Add_New_User",
     type: "wizard",
-    dataSource: "http://localhost:3030/register",
+    dataSource: "https://refs-29ss.onrender.com/register",
     icon: FaUserPlus,
     menu: { name: "Users", icon: FaUser },
     steps: [

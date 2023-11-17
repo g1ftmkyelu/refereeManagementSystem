@@ -34,7 +34,7 @@ import {
 export const resources = [
   {
     path: "appointments",
-    dataSource: "http://localhost:3030/appointments",
+    dataSource: "https://refs-29ss.onrender.com/appointments",
     icon: CiRollingSuitcase,
     sidePanel: false,
     type: "crudTab",
@@ -71,7 +71,7 @@ export const resources = [
   },
   {
     path: "matches",
-    dataSource: "http://localhost:3030/football-matches",
+    dataSource: "https://refs-29ss.onrender.com/football-matches",
     icon: FaRegFutbol,
     sidePanel: false,
     type: "crudTab",
@@ -109,7 +109,7 @@ export const resources = [
   },
   {
     path: "deliveries",
-    dataSource: "http://localhost:3030/deliveries",
+    dataSource: "https://refs-29ss.onrender.com/deliveries",
     icon: CiDeliveryTruck,
     sidePanel: false,
     type: "crudTab",
@@ -146,7 +146,7 @@ export const resources = [
   },
   {
     path: "users",
-    dataSource: "http://localhost:3030/users",
+    dataSource: "https://refs-29ss.onrender.com/users",
     icon: CiUser,
     sidePanel: false,
     type: "crud",
@@ -177,7 +177,7 @@ export const resources = [
 
   {
     path: "categories",
-    dataSource: "http://localhost:3030/categories",
+    dataSource: "https://refs-29ss.onrender.com/categories",
     icon: CiBoxList,
     sidePanel: false,
     type: "crud",
@@ -199,7 +199,7 @@ export const resources = [
   // Resource 6: Customers
   {
     path: "customers",
-    dataSource: "http://localhost:3030/customers",
+    dataSource: "https://refs-29ss.onrender.com/customers",
     icon: CiUser,
     sidePanel: false,
     type: "crud",
@@ -222,7 +222,7 @@ export const resources = [
   // Resource 8: Employees
   {
     path: "employees",
-    dataSource: "http://localhost:3030/employees",
+    dataSource: "https://refs-29ss.onrender.com/employees",
     icon: CiUser,
     sidePanel: false,
     type: "crud",
@@ -256,7 +256,7 @@ export const resources = [
 
   {
     path: "projects",
-    dataSource: "http://localhost:3030/projects",
+    dataSource: "https://refs-29ss.onrender.com/projects",
     icon: CiRollingSuitcase,
     sidePanel: true,
     type: "crud",
@@ -276,7 +276,7 @@ export const resources = [
   },
   {
     path: "tasks",
-    dataSource: "http://localhost:3030/tasks",
+    dataSource: "https://refs-29ss.onrender.com/tasks",
     icon: CiMedicalClipboard,
     sidePanel: false,
     type: "crudGrid",
@@ -295,7 +295,7 @@ export const resources = [
   },
   {
     path: "events",
-    dataSource: "http://localhost:3030/events",
+    dataSource: "https://refs-29ss.onrender.com/events",
     icon: CiCalendarDate,
     sidePanel: false,
     type: "crud",
@@ -315,7 +315,7 @@ export const resources = [
   },
   {
     path: "orders",
-    dataSource: "http://localhost:3030/orders",
+    dataSource: "https://refs-29ss.onrender.com/orders",
     icon: CiShoppingBasket,
     sidePanel: false,
     type: "crudGrid",
@@ -334,7 +334,7 @@ export const resources = [
   },
   {
     path: "blog-posts",
-    dataSource: "http://localhost:3030/blog-posts",
+    dataSource: "https://refs-29ss.onrender.com/blog-posts",
     icon: CiText,
     sidePanel: false,
     type: "crud",
@@ -355,7 +355,7 @@ export const resources = [
   },
   {
     path: "profile",
-    dataSource: "http://localhost:3030/profile",
+    dataSource: "https://refs-29ss.onrender.com/profile",
     icon: CiUser,
     sidePanel: false,
     type: "singleton",

@@ -31,7 +31,7 @@ export const MatchCommisonerResources = [
                         title: "scheduled matches",
                         path: "scheduled matches",
                         icon: BiTimer,
-                        dataSource: "http://localhost:3030/matches/count?status=Scheduled",
+                        dataSource: "https://refs-29ss.onrender.com/matches/count?status=Scheduled",
                         dataType: "count",
                         color: "orange",
                         seeMore: true,
@@ -44,7 +44,7 @@ export const MatchCommisonerResources = [
                         title: "Live matches",
                         path: "Live matches",
                         icon: BiPlayCircle,
-                        dataSource: "http://localhost:3030/matches/count?status=Live",
+                        dataSource: "https://refs-29ss.onrender.com/matches/count?status=Live",
                         dataType: "count",
                         color: "green",
                         seeMore: true,
@@ -57,7 +57,7 @@ export const MatchCommisonerResources = [
                         title: "Completed matches",
                         path: "completed matches",
                         icon: BiCheckDouble,
-                        dataSource: "http://localhost:3030/matches/count?status=Completed",
+                        dataSource: "https://refs-29ss.onrender.com/matches/count?status=Completed",
                         dataType: "count",
                         color: "blue",
                         seeMore: true,
@@ -71,7 +71,7 @@ export const MatchCommisonerResources = [
                         path: "cancelled matches",
                         icon: FaTimesCircle,
                         dataSource:
-                            "http://localhost:3030/matches/count?status=Cancelled",
+                            "https://refs-29ss.onrender.com/matches/count?status=Cancelled",
                         dataType: "count",
                         color: "red",
                         seeMore: true,
@@ -85,7 +85,7 @@ export const MatchCommisonerResources = [
                         path: "teams",
                         icon: IoMdFootball,
                         dataSource:
-                            "http://localhost:3030/teams/count",
+                            "https://refs-29ss.onrender.com/teams/count",
                         dataType: "count",
                         color: "gray",
                         seeMore: true,
@@ -101,7 +101,7 @@ export const MatchCommisonerResources = [
     {
         path: "Add new match",
         type: "wizard",
-        dataSource: "http://localhost:3030/matches",
+        dataSource: "https://refs-29ss.onrender.com/matches",
         icon: FaFolderPlus,
         menu: { name: "Matches", icon: FaFootballBall },
         steps: [
@@ -166,7 +166,7 @@ export const MatchCommisonerResources = [
     },
     {
         path: "all matches",
-        dataSource: "http://localhost:3030/matches",
+        dataSource: "https://refs-29ss.onrender.com/matches",
         icon: FaGolfBall,
         sidePanel: false,
         type: "crud",
@@ -186,7 +186,7 @@ export const MatchCommisonerResources = [
 
     {
         path: "scheduled matches",
-        dataSource: "http://localhost:3030/matches?status=Scheduled",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Scheduled",
         icon: FaCalendarPlus,
         sidePanel: false,
         type: "crud",
@@ -205,7 +205,7 @@ export const MatchCommisonerResources = [
 
     {
         path: "live matches",
-        dataSource: "http://localhost:3030/matches?status=Live",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Live",
         icon: FaPlayCircle,    
         sidePanel: false,
         type: "crud",
@@ -223,7 +223,7 @@ export const MatchCommisonerResources = [
 
     {
         path: "completed matches",
-        dataSource: "http://localhost:3030/matches?status=Completed",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Completed",
         icon: FaRegCalendarAlt,    
         sidePanel: false,
         type: "crud",
@@ -241,7 +241,7 @@ export const MatchCommisonerResources = [
 
     {
         path: "cancelled matches",
-        dataSource: "http://localhost:3030/matches?status=Cancelled",
+        dataSource: "https://refs-29ss.onrender.com/matches?status=Cancelled",
         icon: FaRegTimesCircle,    
         sidePanel: false,
         type: "crud",
@@ -272,7 +272,7 @@ export const MatchCommisonerResources = [
     {
         path: "Add new Team",
         type: "wizard",
-        dataSource: "http://localhost:3030/teams",
+        dataSource: "https://refs-29ss.onrender.com/teams",
         icon: FaFolderPlus,
         menu: { name: "Team management", icon: BiSolidGroup },
         steps: [
@@ -345,7 +345,7 @@ export const MatchCommisonerResources = [
 
     {
         path: "teams",
-        dataSource: "http://localhost:3030/teams",
+        dataSource: "https://refs-29ss.onrender.com/teams",
         icon: BiSolidGroup,
         sidePanel: false,
         type: "crudGrid",
@@ -367,7 +367,7 @@ export const MatchCommisonerResources = [
 
     {
         path: "profile",
-        dataSource: "http://localhost:3030/users",
+        dataSource: "https://refs-29ss.onrender.com/users",
 
         icon: FaUserCog,
         sidePanel: false,
