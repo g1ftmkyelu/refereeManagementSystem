@@ -44,13 +44,16 @@ const CardGrid = ({
         {paginatedData.map((item) => (
           <div key={item.id} className="card">
             <ViewData data={item} schema={rdata.schema} />
-            <div className="button-container">
+            <div className="button-container flex items-center justify-between w-28">
+
               {rdata.view && (
                 <CrudViewButton {...{ openCrudViewModal, item }} />
               )}
+
               {rdata.edit && (
                 <CrudEditButton {...{ openCrudEditModal, item }} />
               )}
+
               {rdata.delete && <CrudDeleteButton {...{ handleDelete, item }} />}
             </div>
           </div>
