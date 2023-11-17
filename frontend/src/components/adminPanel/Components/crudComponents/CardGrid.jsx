@@ -38,6 +38,8 @@ const CardGrid = ({
 
   return (
     <>
+
+
       <div className="card-grid" style={gridStyle}>
         {paginatedData.map((item) => (
           <div key={item.id} className="card">

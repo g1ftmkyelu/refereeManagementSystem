@@ -63,7 +63,7 @@ const CrudGrid = ({ rdata, stausCaption }) => {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading || createResource.isLoading || editResource.isLoading || deleteResource.isLoading? (
         <Loader />
       ) : (
         <>
