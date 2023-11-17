@@ -120,7 +120,7 @@ export const AdminResources = [
     {
         path: "Add_New_User",
         type: "wizard",
-        dataSource: "https://refs-29ss.onrender.com/users",
+        dataSource: "https://refs-29ss.onrender.com/register",
         icon: FaUserPlus,
         menu: { name: "Users", icon: FaUsers },
         steps: [
