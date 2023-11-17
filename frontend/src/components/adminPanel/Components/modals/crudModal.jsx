@@ -13,8 +13,8 @@ const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema
     },
  overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      width:'100vw',
-      height:'100vh'
+      width: '300vw',
+      height: '300vh',
       
     }
   };
