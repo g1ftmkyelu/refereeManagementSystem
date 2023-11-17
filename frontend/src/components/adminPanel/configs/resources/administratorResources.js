@@ -221,7 +221,7 @@ export const AdminResources = [
         dataSource: "https://refs-29ss.onrender.com/users",
         icon: FaUserShield,
         sidePanel: false,
-        type: "crud",
+        type: "crudGrid",
 
         view: true,
 
