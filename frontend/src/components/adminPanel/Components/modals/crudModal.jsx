@@ -7,14 +7,14 @@ const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema
 
   const customStyles = {
     content: {
-      maxWidth: '700px',
-      maxHeight: '700px',
+      maxWidth: '900px',
+      maxHeight: '900px',
       margin: 'auto',
     },
  overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      width: '300vw',
-      height: '300vh',
+      width:'100vw',
+      height:'100vh'
       
     }
   };

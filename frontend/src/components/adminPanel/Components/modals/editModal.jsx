@@ -12,8 +12,8 @@ const EditModal = ({ isOpen, onRequestClose, selectedItem, schema, onDataFromGra
         },
         overlay: {
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            width: '300vw',
-            height: '300vh',
+            width: '100vw',
+            height: '100vh',
             position: 'absolute',
             top: 0,
             left: -20,
