@@ -6,14 +6,14 @@ import { FaTimes } from 'react-icons/fa';
 const EditModal = ({ isOpen, onRequestClose, selectedItem, schema, onDataFromGrandchild }) => {
     const customStyles = {
         content: {
-            maxWidth: '900px',
-            maxHeight: '900px',
+            maxWidth: '700px',
+            maxHeight: '700px',
             margin: 'auto',
         },
         overlay: {
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            width: '200vw',
-            height: '100vh',
+            width: '300vw',
+            height: '200vh',
             position: 'absolute',
             top: 0,
             left: -20,
