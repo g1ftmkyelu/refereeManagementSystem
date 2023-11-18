@@ -121,7 +121,7 @@ export const MatchCommisonerResources = [
                 fields: [
                     {
                         name: "players",
-                        type: "textarea",
+                        type: "tags",
                         placeholder: "team players",
                     },
                 ],
@@ -179,7 +179,7 @@ export const MatchCommisonerResources = [
         schema: [
             { name: "logo", title: "Team Logo", type: "file" },
             { name: "name", title: "Team Name", type: "text" },
-            { name: 'players', title: 'Players', type: 'text' },
+            { name: 'players', title: 'Players', type: 'tags' },
             { name: "coach", title: "team coach", type: "text" },
             { name: "homeVenue", title: "homeVenue", type: "text" },
 

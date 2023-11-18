@@ -26,6 +26,20 @@ const ViewData = ({ schema, data }) => {
                                 )}
                             </div>
                         );
+                    case 'tags':
+                        return (
+                            <div key={name} className="mb-4">
+                                <div className="font-bold text-lg">{title}:</div>
+                                <div className="flex flex-wrap mt-2">
+                                    {fieldValue.map((tag, index) => (
+                                        <span key={index} className="bg-blue-500 text-white px-2 py-1 rounded-md mr-2 mb-2">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        );
+
                     default:
                         return (
                             <div key={name} style={{ marginBottom: '10px' }}>

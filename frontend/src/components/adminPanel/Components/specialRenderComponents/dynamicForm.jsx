@@ -5,6 +5,7 @@ import { AwesomeButton } from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import moment from 'moment';
 import { RiImageAddFill, RiEdit2Fill } from 'react-icons/ri'; // Import the desired React Icons
+import TagsInput from './inputComponents/TagsInput';
 
 
 const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
@@ -24,6 +25,10 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
         const value = e.target.value;
         setFormData({ ...formData, [fieldName]: value });
     };
+
+    const handleTagInputChange = (tags, fieldName) => {
+        setFormData({ ...formData, [fieldName]: tags });
+      }
 
     const handleSubmit = (e) => {
         e.preventDefault();
