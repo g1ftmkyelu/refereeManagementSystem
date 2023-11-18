@@ -348,6 +348,17 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
                                         />
                                     </div>
                                 );
+                            case 'tags': 
+                                return (
+                                    <div key={name}>
+                                        <label className='form-label' htmlFor={name}>{title}</label><br />
+                                        <TagsInput
+                                            tags={formData[name] || []} // Pass current tags as prop
+                                            placeholder={`Add ${title.toLowerCase()}...`}
+                                            onUpdateTags={(tags) => handleTagInputChange(tags, name)} // Handle tag updates
+                                        />
+                                    </div>
+                                );
                             default:
                                 return null;
                         }
