@@ -260,7 +260,7 @@ export const MatchCommisonerResources = [
         dataSource: "https://refs-29ss.onrender.com/matches",
         icon: FaGolfBall,
         sidePanel: false,
-        type: "crud",
+        type: "crudGrid",
         edit: true,
         view: true,
         delete: true,
