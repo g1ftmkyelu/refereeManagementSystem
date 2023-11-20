@@ -37,7 +37,7 @@ const CrudGrid = ({ rdata, stausCaption }) => {
 
   const numColumns = useSelector((state) => state.numColumns);
   const dispatch = useDispatch();
-
+  const [filteredData, setFilteredData] = useState([]);
 
   const deleteResource = useDeleteResource(rdata.path, rdata.dataSource);
   const createResource = useCreateResource(rdata.path, rdata.dataSource);
@@ -49,8 +49,24 @@ const CrudGrid = ({ rdata, stausCaption }) => {
   );
 
   useEffect(() => {
-    console.log(data);
-  });
+    if (data) {
+      const filtered = data.filter((item) => {
+        // Iterate through the keys of each item and check for a match
+        for (const key in item) {
+          if (
+            item[key] &&
+            typeof item[key] === 'string' && // Check if the value is a string
+            item[key].toLowerCase().includes(searchInput.toLowerCase())
+          ) {
+            return true; // Return true if the value includes the search input
+          }
+        }
+        return false; // Return false if no match is found in any field
+      });
+      setFilteredData(filtered);
+    }
+  }, [data, searchInput]);
+
 
 
 
@@ -63,7 +79,7 @@ const CrudGrid = ({ rdata, stausCaption }) => {
 
   return (
     <>
-      {isLoading || createResource.isLoading || editResource.isLoading || deleteResource.isLoading? (
+      {isLoading || createResource.isLoading || editResource.isLoading || deleteResource.isLoading ? (
         <Loader />
       ) : (
         <>
@@ -75,13 +91,15 @@ const CrudGrid = ({ rdata, stausCaption }) => {
                 alignContent: "center",
                 paddingBottom: "15px",
               }}
+              className="bg-white p-5 mb-4 shadow-md rounded-lg"
             >
               <input
                 style={{ width: "95%" }}
                 type="text"
-                placeholder="Search..." // Step 2: Add a search input
-                className=" border-none rounded-lg"
-                onChange={(e) => { handleFilter(e.target.value) }} // Step 3: Update the search input state
+                placeholder={`Search ${rdata.path}...`}
+                className="border-none rounded-lg px-5 font-extrabold bg-slate-200"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
               />
 
               {numColumns != 1 ?
@@ -95,7 +113,7 @@ const CrudGrid = ({ rdata, stausCaption }) => {
 
               }
 
-        
+              {rdata.add &&
 
                 <CrudAddButton
                   {...{
@@ -108,20 +126,16 @@ const CrudGrid = ({ rdata, stausCaption }) => {
                       ),
                   }}
                 />
-              
+              }
             </div>
 
             <CardGrid
               {...{
                 rdata,
-                data,
+                data: filteredData, // Use filteredData instead of data
                 numColumns,
                 openCrudViewModal: (item) =>
-                  openCrudViewModal(
-                    item,
-                    setSelectedItem,
-                    setIsViewModalOpen
-                  ),
+                  openCrudViewModal(item, setSelectedItem, setIsViewModalOpen),
                 openCrudEditModal: (item) =>
                   openCrudEditModal(
                     item,
@@ -157,6 +171,7 @@ const CrudGrid = ({ rdata, stausCaption }) => {
           />
         </>
       )}
+
     </>
   );
 };

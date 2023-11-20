@@ -100,18 +100,20 @@ const LoginPage = ({registerLink}) => {
     }}>
 
       {loading ? <Loader /> :
-        <div  className='h-screen w-screen flex items-center justify-center bg-slate-200'>
+        <div  className='h-screen w-screen flex items-center justify-center'
+        style={{
+          backgroundImage:"url(https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+        >
           <DynamicForm
             schema={schema}
             onDataFromGrandchild={handleDataFromGrandchild}
             title={'login'}
           />
-          <div>
-            <h1 className=" text-lg font-bold">
-              don't have an account?<br/>
-              <Link className="text-blue-600 text-3xl" to={'/register'}>register</Link>
-            </h1>
-          </div>
+
         </div>
       }
 

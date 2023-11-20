@@ -31,6 +31,7 @@ const ApiSelect = ({ title, value, onChange, dataSource }) => {
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className="border border-gray-300 p-3 w-full rounded-md mb-4"
+      required
     >
       <option value="">{title}</option>
       {extractedNames.map((name, index) => (

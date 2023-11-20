@@ -6,7 +6,7 @@ import 'react-awesome-button/dist/styles.css';
 import moment from 'moment';
 import { RiImageAddFill, RiEdit2Fill } from 'react-icons/ri'; // Import the desired React Icons
 import TagsInput from './inputComponents/TagsInput';
-
+import FileInput from './inputComponents/FileInput';
 
 const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
     const [updateMode, setUpdateMode] = useState(false);
@@ -28,7 +28,7 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
 
     const handleTagInputChange = (tags, fieldName) => {
         setFormData({ ...formData, [fieldName]: tags });
-      }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -260,50 +260,11 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
                                 return (
                                     // ...
                                     <div className="border p-4 rounded-md w-full shadow-md flex flex-col items-center">
-                                        {/* Your form fields */}
-                                        <div key={name} className="flex flex-col w-full items-center mb-4">
-                                            <label className="form-label text-xl font-bold mb-2" htmlFor={name}>
-                                                {title}
-                                            </label>
-                                            {updateMode ? (
-                                                <div className="mt-2 w-full">
-                                                    <label className='form-label' htmlFor={name}>{title}</label><br></br>
-                                                    <input
-                                                        type="url"
-                                                        id={name}
-                                                        name={name}
-                                                        placeholder='paste image url here...'
-                                                        onChange={(e) => handleInputChange(e, name)}
-                                                        className={'p-3 m5 bg-gray-300 rounded-md w-full'}
-                                                        required
-                                                    />
-                                                </div>
-                                            ) : (
-                                                <div className="mt-2">
-                                                    <img
-                                                        src={formData[name] || 'https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png'}
-                                                        alt={title}
-                                                        className="w-72 h-72 rounded-md"
-                                                    />
-                                                </div>
-                                            )}
-                                        </div>
-                                        <label
-                                            className="form-label cursor-pointer self-start mb-2 ml-2 flex items-center p-3 bg-blue-500 font-bold text-white"
-                                            onClick={() => setUpdateMode(!updateMode)}
-                                        >
-                                            {updateMode ? (
-                                                <>
-                                                    <RiImageAddFill className="mr-2" />
-                                                    <span>Display Image</span>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <RiEdit2Fill className="mr-2" />
-                                                    <span>Update</span>
-                                                </>
-                                            )}
-                                        </label>
+                                        <FileInput
+                                            formData={formData}
+                                            fieldName={name}
+                                            setFormData={setFormData}
+                                        />
                                     </div>
                                 );
                             case 'color':
@@ -353,7 +314,7 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
                                         />
                                     </div>
                                 );
-                            case 'tags': 
+                            case 'tags':
                                 return (
                                     <div key={name}>
                                         <label className='form-label' htmlFor={name}>{title}</label><br />

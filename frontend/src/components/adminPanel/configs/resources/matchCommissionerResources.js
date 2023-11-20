@@ -155,7 +155,7 @@ export const MatchCommisonerResources = [
                 fields: [
                     {
                         name: "logo",
-                        type: "url",
+                        type: "image",
                         placeholder: "paste team logo url here...",
                     },
                 ],

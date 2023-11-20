@@ -1,5 +1,5 @@
 import React from 'react';
-import DynamicWizard from '../Components/specialRenderComponents/DynamicWizardAlt';
+import DynamicWizard from '../Components/specialRenderComponents/MyDynamicWizard';
 import { FaUser, FaUserPlus } from 'react-icons/fa';
 
 const config=  {

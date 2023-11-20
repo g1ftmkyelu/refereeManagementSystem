@@ -9,6 +9,7 @@ import SelectFieldAlt from './inputComponents/selectField';
 import { MoonLoader } from "react-spinners";
 import TagsInput from './inputComponents/TagsInput';
 import ApiSelect from './inputComponents/apiSelect';
+import { FileInput } from './inputComponents';
 
 const DynamicWizard = ({ rdata }) => {
 
@@ -27,39 +28,43 @@ const DynamicWizard = ({ rdata }) => {
   const handleChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
   };
+  const [validationErrors, setValidationErrors] = useState({});
 
+  // Function to validate fields
+  const validateFields = () => {
+    let fieldErrors = {};
 
-
-
-  const currentStepFields = steps[currentStep].fields;
-
-  const isValidStep = () => {
-    const requiredFields = currentStepFields.filter(field => field.required);
-    for (const field of requiredFields) {
-      if (!formData[field.name]) {
-        // You can display an error message here or handle it as needed
-        Swal.fire({
-          icon: 'error',
-          title: 'Validation Error',
-          text: `Please fill in ${field.name}.`,
-        });
-        return false;
+    stepFields.forEach((field) => {
+      // Check if the field is required and empty
+      if (!formData[field.name] && field.required) {
+        fieldErrors[field.name] = `${field.name} is required`;
+      } else {
+        delete fieldErrors[field.name]; // Clear validation error if field is filled
       }
-    }
-    return true;
+    });
+
+    setValidationErrors(fieldErrors);
   };
 
+  const handleBlur = () => {
+    validateFields();
+  };
+
+
   const handleNext = () => {
-    if (isValidStep()) {
-      setCurrentStep(prevStep => prevStep + 1);
-      setStepFields(steps[currentStep + 1].fields);
-    }
+
+    const nextStep = currentStep + 1;
+    setCurrentStep(nextStep);
+    setStepFields(steps[nextStep].fields);
+
   };
 
   const handlePrevious = () => {
-    setCurrentStep((prevStep) => prevStep - 1);
-    setStepFields(steps[currentStep - 1].fields);
+    const prevStep = currentStep - 1;
+    setCurrentStep(prevStep);
+    setStepFields(steps[prevStep].fields);
   };
+
 
 
 
@@ -134,13 +139,14 @@ const DynamicWizard = ({ rdata }) => {
             steps={steps.map((step) => ({ title: step.title }))}
             activeStep={currentStep}
             circleTop={0}
-            size={48}
+            size={35}
             circleFontSize={20}
             titleFontSize={20}
             activeColor="#007BFF"
             completeColor="#28A745"
             defaultBarColor="#E0E0E0"
             completeBarColor="#E0E0E0"
+
           />
           <div className="mb-8 mt-4">
             <h2 className="text-2xl font-semibold mb-6">{`Step ${currentStep + 1}: ${steps[currentStep].title}`}</h2>
@@ -175,6 +181,8 @@ const DynamicWizard = ({ rdata }) => {
                   placeholder={field.placeholder || ''}
                   value={formData[field.name]}
                   onChange={(e) => handleChange(field.name, e.target.value)}
+                  onBlur={handleBlur}
+                  required
                   className="border border-gray-300 p-3 w-full rounded-md mb-4"
                 />
               ) : field.type === 'tags' ? (
@@ -189,6 +197,18 @@ const DynamicWizard = ({ rdata }) => {
                   />
                 </div>
 
+              ) : field.type === 'image' ? (
+                <div key={field.name}>
+                  <label className="form-label" htmlFor={field.name}>
+                    {field.name}
+                  </label>
+                  <FileInput
+                    fieldName={field.name}
+                    formData={formData}
+                    setFormData={setFormData}
+                  />
+                </div>
+
               ) : (
                 <input
                   key={field.name}
@@ -197,6 +217,8 @@ const DynamicWizard = ({ rdata }) => {
                   value={formData[field.name]}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   className="border border-gray-300 p-3 w-full rounded-md mb-4"
+                  onBlur={handleBlur}
+                  required
                 />
               )
             )}
@@ -208,7 +230,12 @@ const DynamicWizard = ({ rdata }) => {
                 </button>
               )}
               {currentStep < steps.length - 1 ? (
-                <button onClick={handleNext} className="bg-blue-500 text-white px-6 py-3 rounded-md">
+                // Disable "Next" button if there are validation errors in the current step
+                <button
+                  onClick={handleNext}
+                  className="bg-blue-500 text-white px-6 py-3 rounded-md"
+                  disabled={Object.keys(validationErrors).length > 0}
+                >
                   Next
                 </button>
               ) : (

@@ -133,6 +133,10 @@ export const AdminResources = [
                         placeholder: "First Name",
                     },
                 ],
+                onClick: (e) => {
+                    e.preventDefault()
+                    console.log('onClick', 4)
+                }
             },
             {
                 title: "Enter Last Name",
@@ -203,11 +207,11 @@ export const AdminResources = [
                 ],
             },
             {
-                title: "Enter profile Image link",
+                title: "Upload User ProfileImage",
                 fields: [
                     {
                         name: "Image",
-                        type: "url",
+                        type: "image",
                         placeholder: "image url",
                     },
                 ],
@@ -239,10 +243,10 @@ export const AdminResources = [
     },
     {
         path: "administrators",
-        dataSource: "https://refs-29ss.onrender.com/users",
+        dataSource: "https://refs-29ss.onrender.com/users?role=administrator",
         icon: FaUser,
         sidePanel: false,
-        type: "crud",
+        type: "crudGrid",
 
         view: true,
 
@@ -263,10 +267,10 @@ export const AdminResources = [
     },
     {
         path: "referees",
-        dataSource: "https://refs-29ss.onrender.com/users",
+        dataSource: "https://refs-29ss.onrender.com/users?role=referee",
         icon: BiFootball,
         sidePanel: false,
-        type: "crud",
+        type: "crudGrid",
 
         view: true,
 
@@ -287,10 +291,10 @@ export const AdminResources = [
     },
     {
         path: "assessors",
-        dataSource: "https://refs-29ss.onrender.com/users",
+        dataSource: "https://refs-29ss.onrender.com/users?role=assessor",
         icon: MdSearch,
         sidePanel: false,
-        type: "crud",
+        type: "crudGrid",
 
         view: true,
 
@@ -314,10 +318,10 @@ export const AdminResources = [
 
     {
         path: "allocation-officers",
-        dataSource: "https://refs-29ss.onrender.com/users",
+        dataSource: "https://refs-29ss.onrender.com/users?role=allocationofficer",
         icon: MdPlaylistAddCheck,
         sidePanel: false,
-        type: "crud",
+        type: "crudGrid",
 
         view: true,
 
@@ -340,10 +344,10 @@ export const AdminResources = [
 
     {
         path: "match-commissioner",
-        dataSource: "https://refs-29ss.onrender.com/users",
+        dataSource: "https://refs-29ss.onrender.com/users?role=matchcommissioner",
         icon: MdSupervisorAccount,
         sidePanel: false,
-        type: "crud",
+        type: "crudGrid",
 
         view: true,
 
