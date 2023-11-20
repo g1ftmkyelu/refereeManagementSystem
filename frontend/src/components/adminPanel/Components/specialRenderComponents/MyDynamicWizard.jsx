@@ -146,6 +146,7 @@ const DynamicWizard = ({ rdata }) => {
             completeColor="#28A745"
             defaultBarColor="#E0E0E0"
             completeBarColor="#E0E0E0"
+    
 
           />
           <div className="mb-8 mt-4">

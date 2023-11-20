@@ -90,13 +90,13 @@ const CustomTable = ({
 
       <div style={{ width: "100%" }}>
 
-        <section className=" flex content-center justify-between p-5">
+        <section className=" flex content-center justify-between bg-white p-5 mb-4 shadow-sm rounded-lg">
           {rdata.add && <CrudAddButton {...{ openCrudAddModal }} />}
           <div >
             <input
               type="text"
               className=" bg-gray-100 border-0 outline-0 p-2 rounded-md"
-              placeholder="Search..."
+              placeholder={`Search ${rdata.path}...`}
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             />
