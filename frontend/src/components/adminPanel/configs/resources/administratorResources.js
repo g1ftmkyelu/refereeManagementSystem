@@ -23,6 +23,9 @@ import {
     FaCalendarDay,
     FaUserCog,
     FaUserShield,
+    FaFolderPlus,
+    FaGolfBall,
+    FaFootballBall,
 } from "react-icons/fa";
 import {
     BiArchive,
@@ -365,6 +368,192 @@ export const AdminResources = [
             { name: "firstName", title: "First Name", type: "text" },
             { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
+        ],
+    },
+
+    {
+        path: "Add new Team",
+        type: "wizard",
+        dataSource: "https://refs-29ss.onrender.com/teams",
+        icon: FaFolderPlus,
+        menu: { name: "Team management", icon: BiSolidGroup },
+        steps: [
+            {
+                title: "Enter Team name",
+                fields: [
+                    {
+                        name: "name",
+                        type: "text",
+                        placeholder: "enter team name",
+                    },
+                ],
+            },
+            {
+                title: "Enter players",
+                fields: [
+                    {
+                        name: "players",
+                        type: "tags",
+                        placeholder: "team players",
+                    },
+                ],
+            },
+
+            {
+                title: "Team Coach",
+                fields: [
+                    {
+                        name: "coach",
+                        type: "text",
+                        placeholder: "team coach",
+                    },
+                ],
+            },
+
+            {
+                title: "Team Home Venue",
+                fields: [
+                    {
+                        name: "homeVenue",
+                        type: "text",
+                        placeholder: "home Venue",
+                    },
+                ],
+            },
+
+
+            {
+                title: "Enter Team Logo",
+                fields: [
+                    {
+                        name: "logo",
+                        type: "image",
+                        placeholder: "paste team logo url here...",
+                    },
+                ],
+            },
+        ],
+        successMessage: "team added successfully!",
+        successPath: "teams",
+    },
+
+
+    {
+        path: "teams",
+        dataSource: "https://refs-29ss.onrender.com/teams",
+        icon: BiSolidGroup,
+        sidePanel: false,
+        type: "crudGrid",
+        view: true,
+        edit: true,
+        delete: true,
+        menu: { name: "Team management", icon: BiSolidGroup },
+        schema: [
+            { name: "logo", title: "Team Logo", type: "file" },
+            { name: "name", title: "Team Name", type: "text" },
+            { name: 'players', title: 'Players', type: 'tags' },
+            { name: "coach", title: "team coach", type: "text" },
+            { name: "homeVenue", title: "homeVenue", type: "text" },
+
+        ],
+    },
+
+    {
+        path: "Add new match",
+        type: "wizard",
+        dataSource: "https://refs-29ss.onrender.com/matches",
+        icon: FaFolderPlus,
+        menu: { name: "Match Management", icon: FaFootballBall },
+        steps: [
+            {
+                title: "Select Home Team",
+                fields: [
+                    {
+                        name: "homeTeam",
+                        type: "apiselect",
+                        displayKey: "name",
+                        placeholder: "home team",
+                        dataSource: "https://refs-29ss.onrender.com/teams?returnFields=name"
+                    },
+                ],
+            },
+            {
+                title: "Select Away Team",
+                fields: [
+                    {
+                        name: "awayTeam",
+                        type: "apiselect",
+                        displayKey: "name",
+                        placeholder: "home team",
+                        dataSource: "https://refs-29ss.onrender.com/teams?returnFields=name"
+                    },
+                ],
+            },
+            {
+                title: "Select Match date",
+                fields: [
+                    {
+                        name: "date",
+                        type: "date",
+                    },
+                ],
+            },
+
+            {
+                title: "Select Match Status",
+                fields: [
+                    {
+                        name: "status",
+                        type: "selectAlt",
+                        placeholder: "Select Role",
+                        data: [
+                            "Scheduled",
+                            "Live",
+                            "Completed",
+                            "Cancelled"],
+                    },
+                ],
+            },
+            {
+                title: "Enter match venue",
+                fields: [
+                    {
+                        name: "venue",
+                        type: "text",
+                        placeholder: "enter match venue",
+                    },
+                ],
+            },
+        ],
+        successMessage: "success!",
+        successPath: "all matches",
+    },
+    {
+        path: "all matches",
+        dataSource: "https://refs-29ss.onrender.com/matches",
+        icon: FaGolfBall,
+        sidePanel: false,
+        type: "crudGrid",
+        displayComponent:"GridCard1",
+        edit: true,
+        view: true,
+        delete: true,
+
+        menu: { name: "Match Management", icon: FaFootballBall },
+        schema: [
+
+            { name: "homeTeam", title: "Home Team", type: "text" },
+            { name: "awayTeam", title: "Away Team", type: "text" },
+            {
+                name: "status", title: "Status", type: "select",
+                options: [
+                    { label: "Scheduled", value: "Scheduled" },
+                    { label: "Live", value: "Live" },
+                    { label: "Completed", value: "Completed" },
+                    { label: "Cancelled", value: "Cencelled" }
+                ]
+            },
+            { name: "venue", title: "Venue", type: "text" },
         ],
     },
 

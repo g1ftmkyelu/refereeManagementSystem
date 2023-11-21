@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ViewData = ({ schema, data }) => {
+    const [displayData, setDisplayData] = useState({});
+
+    useEffect(() => {
+        // Update the displayData whenever 'data' prop changes
+        setDisplayData(data);
+    }, [data]);
     return (
         <div style={{ border: '1px solid #ddd', padding: '10px', borderRadius: '5px', background: '#f9f9f9' }}>
             {schema.map((field) => {

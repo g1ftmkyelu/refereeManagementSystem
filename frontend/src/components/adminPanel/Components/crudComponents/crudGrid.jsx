@@ -24,6 +24,7 @@ import { CrudAddButton } from "./CrudButtons";
 import { changeNumColumns } from "../../../../Redux/slices/gridColumnThunk";
 import { useSelector, useDispatch } from 'react-redux';
 import { CiBoxList, CiGrid32 } from "react-icons/ci";
+import NoData from "../coreComponents/NoData";
 
 const CrudGrid = ({ rdata, stausCaption }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -81,7 +82,10 @@ const CrudGrid = ({ rdata, stausCaption }) => {
     <>
       {isLoading || createResource.isLoading || editResource.isLoading || deleteResource.isLoading ? (
         <Loader />
-      ) : (
+      ): !data || data==undefined || data.length<=0? (
+          <NoData/>
+
+      ) :(
         <>
 
           <div className="px-24 py-10">
