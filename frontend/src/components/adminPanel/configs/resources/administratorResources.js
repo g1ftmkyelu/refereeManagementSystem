@@ -441,8 +441,8 @@ export const AdminResources = [
         dataSource: "https://refs-29ss.onrender.com/match-reports",
         icon: BiSolidGroup,
         sidePanel: false,
-        type: "crudGrid",
-        add:true,
+        type: "crud",
+        add: true,
         view: true,
         edit: true,
         delete: true,
@@ -450,75 +450,69 @@ export const AdminResources = [
             { name: 'match', title: 'Match', type: 'text' },
             { name: 'summary', title: 'Summary', type: 'textarea' },
             {
-                name: 'statistics',
-                title: 'Statistics',
+                name: 'goals',
+                title: 'Goals',
                 type: 'object',
                 schema: [
-                    {
-                        name: 'goals',
-                        title: 'Goals',
-                        type: 'object',
-                        schema: [
-                            { name: 'homeTeam', title: 'Home Team Goals', type: 'number' },
-                            { name: 'awayTeam', title: 'Away Team Goals', type: 'number' },
-                        ],
-                    },
-                    {
-                        name: 'possession',
-                        title: 'Possession',
-                        type: 'object',
-                        schema: [
-                            { name: 'homeTeam', title: 'Home Team Possession', type: 'text' },
-                            { name: 'awayTeam', title: 'Away Team Possession', type: 'text' },
-                        ],
-                    },
-                    {
-                        name: 'shots',
-                        title: 'Shots',
-                        type: 'object',
-                        schema: [
-                            { name: 'homeTeam', title: 'Home Team Shots', type: 'number' },
-                            { name: 'awayTeam', title: 'Away Team Shots', type: 'number' },
-                        ],
-                    },
-                    {
-                        name: 'shotsOnTarget',
-                        title: 'Shots on Target',
-                        type: 'object',
-                        schema: [
-                            { name: 'homeTeam', title: 'Home Team Shots on Target', type: 'number' },
-                            { name: 'awayTeam', title: 'Away Team Shots on Target', type: 'number' },
-                        ],
-                    },
-                    {
-                        name: 'fouls',
-                        title: 'Fouls',
-                        type: 'object',
-                        schema: [
-                            { name: 'homeTeam', title: 'Home Team Fouls', type: 'number' },
-                            { name: 'awayTeam', title: 'Away Team Fouls', type: 'number' },
-                        ],
-                    },
-                    {
-                        name: 'corners',
-                        title: 'Corners',
-                        type: 'object',
-                        schema: [
-                            { name: 'homeTeam', title: 'Home Team Corners', type: 'number' },
-                            { name: 'awayTeam', title: 'Away Team Corners', type: 'number' },
-                        ],
-                    },
-                    {
-                        name: 'offsides',
-                        title: 'Offsides',
-                        type: 'object',
-                        schema: [
-                            { name: 'homeTeam', title: 'Home Team Offsides', type: 'number' },
-                            { name: 'awayTeam', title: 'Away Team Offsides', type: 'number' },
-                        ],
-                    },
+                    { name: 'homeTeam', title: 'Home Team Goals', type: 'number' },
+                    { name: 'awayTeam', title: 'Away Team Goals', type: 'number' },
                 ],
             },
+            {
+                name: 'possession',
+                title: 'Possession',
+                type: 'object',
+                schema: [
+                    { name: 'homeTeam', title: 'Home Team Possession', type: 'text' },
+                    { name: 'awayTeam', title: 'Away Team Possession', type: 'text' },
+                ],
+            },
+            {
+                name: 'shots',
+                title: 'Shots',
+                type: 'object',
+                schema: [
+                    { name: 'homeTeam', title: 'Home Team Shots', type: 'number' },
+                    { name: 'awayTeam', title: 'Away Team Shots', type: 'number' },
+                ],
+            },
+            {
+                name: 'shotsOnTarget',
+                title: 'Shots on Target',
+                type: 'object',
+                schema: [
+                    { name: 'homeTeam', title: 'Home Team Shots on Target', type: 'number' },
+                    { name: 'awayTeam', title: 'Away Team Shots on Target', type: 'number' },
+                ],
+            },
+            {
+                name: 'fouls',
+                title: 'Fouls',
+                type: 'object',
+                schema: [
+                    { name: 'homeTeam', title: 'Home Team Fouls', type: 'number' },
+                    { name: 'awayTeam', title: 'Away Team Fouls', type: 'number' },
+                ],
+            },
+            {
+                name: 'corners',
+                title: 'Corners',
+                type: 'object',
+                schema: [
+                    { name: 'homeTeam', title: 'Home Team Corners', type: 'number' },
+                    { name: 'awayTeam', title: 'Away Team Corners', type: 'number' },
+                ],
+            },
+            {
+                name: 'offsides',
+                title: 'Offsides',
+                type: 'object',
+                schema: [
+                    { name: 'homeTeam', title: 'Home Team Offsides', type: 'number' },
+                    { name: 'awayTeam', title: 'Away Team Offsides', type: 'number' },
+                ],
+            },
+
             { name: 'weatherConditions', title: 'Weather Conditions', type: 'text' },
             { name: 'notableEvents', title: 'Notable Events', type: 'tags', itemType: 'text' },
             { name: 'durationMinutes', title: 'Duration (Minutes)', type: 'number' },

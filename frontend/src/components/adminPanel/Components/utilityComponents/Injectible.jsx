@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
-
-// Styling for the modal (customized for improved appearance)
 const modalStyle = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 1000,
   },
+
+  
   content: {
     position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    minWidth: '80%',
-    minHeight: '80%',
-    padding: '20px',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
     border: 'none',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
     overflow: 'auto',
     outline: 'none',
     backgroundColor: 'white',
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
   },
+
+
   closeButton: {
     position: 'absolute',
     top: '10px',
@@ -56,6 +60,7 @@ const Injectible = ({ component, buttonCaption, ButtonIcon, isFullScreen }) => {
         style={modalStyle}
         contentLabel="Injected Modal"
         shouldCloseOnOverlayClick={true}
+        className='flex justify-center content-center items-center'
       >
         <button onClick={closeModal} style={modalStyle.closeButton}>
           {isFullScreen ? 'Back' : 'Close'}

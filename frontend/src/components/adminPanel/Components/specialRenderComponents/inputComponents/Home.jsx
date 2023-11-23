@@ -62,7 +62,7 @@ const Home = ({ metrics }) => {
     setData(updatedData);
     console.log(updatedData);
   }
-  
+
   const schema = [
     { name: 'name', title: 'Name', type: 'text' },
     { name: 'age', title: 'Age', type: 'number' },
@@ -91,10 +91,6 @@ const Home = ({ metrics }) => {
         <DashboardCardSection {...{ metrics }} />
       </div>
 
-      <div>
-        <h1>Dynamic CRUD Editor</h1>
-        <DynamicCRUD schema={schema} nestedData={data} onSubmit={handleFormSubmit} />
-      </div>
 
     </div>
   );
