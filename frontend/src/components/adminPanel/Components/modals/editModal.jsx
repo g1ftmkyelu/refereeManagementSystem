@@ -11,18 +11,19 @@ const EditModal = ({ isOpen, onRequestClose, selectedItem, schema, onDataFromGra
             margin: 'auto',
         },
         overlay: {
+            position: "fixed",
+            inset: "0",
+            zIndex: " 50",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: " center",
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            width: '100vw',
-            height: '100vh',
-            position: 'absolute',
-            top: 0,
-            left: -20,
-            zIndex: 9999, // Set a high z-index value to ensure the overlay is on top
-        },
+        }
+
     };
 
     return (
-        
+
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}

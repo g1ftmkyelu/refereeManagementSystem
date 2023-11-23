@@ -436,7 +436,115 @@ export const AdminResources = [
         successMessage: "team added successfully!",
         successPath: "teams",
     },
-
+    {
+        path: "match reports",
+        dataSource: "https://refs-29ss.onrender.com/match-reports",
+        icon: BiSolidGroup,
+        sidePanel: false,
+        type: "crudGrid",
+        add:true,
+        view: true,
+        edit: true,
+        delete: true,
+        schema: [
+            { name: 'match', title: 'Match', type: 'text' },
+            { name: 'summary', title: 'Summary', type: 'textarea' },
+            {
+                name: 'statistics',
+                title: 'Statistics',
+                type: 'object',
+                schema: [
+                    {
+                        name: 'goals',
+                        title: 'Goals',
+                        type: 'object',
+                        schema: [
+                            { name: 'homeTeam', title: 'Home Team Goals', type: 'number' },
+                            { name: 'awayTeam', title: 'Away Team Goals', type: 'number' },
+                        ],
+                    },
+                    {
+                        name: 'possession',
+                        title: 'Possession',
+                        type: 'object',
+                        schema: [
+                            { name: 'homeTeam', title: 'Home Team Possession', type: 'text' },
+                            { name: 'awayTeam', title: 'Away Team Possession', type: 'text' },
+                        ],
+                    },
+                    {
+                        name: 'shots',
+                        title: 'Shots',
+                        type: 'object',
+                        schema: [
+                            { name: 'homeTeam', title: 'Home Team Shots', type: 'number' },
+                            { name: 'awayTeam', title: 'Away Team Shots', type: 'number' },
+                        ],
+                    },
+                    {
+                        name: 'shotsOnTarget',
+                        title: 'Shots on Target',
+                        type: 'object',
+                        schema: [
+                            { name: 'homeTeam', title: 'Home Team Shots on Target', type: 'number' },
+                            { name: 'awayTeam', title: 'Away Team Shots on Target', type: 'number' },
+                        ],
+                    },
+                    {
+                        name: 'fouls',
+                        title: 'Fouls',
+                        type: 'object',
+                        schema: [
+                            { name: 'homeTeam', title: 'Home Team Fouls', type: 'number' },
+                            { name: 'awayTeam', title: 'Away Team Fouls', type: 'number' },
+                        ],
+                    },
+                    {
+                        name: 'corners',
+                        title: 'Corners',
+                        type: 'object',
+                        schema: [
+                            { name: 'homeTeam', title: 'Home Team Corners', type: 'number' },
+                            { name: 'awayTeam', title: 'Away Team Corners', type: 'number' },
+                        ],
+                    },
+                    {
+                        name: 'offsides',
+                        title: 'Offsides',
+                        type: 'object',
+                        schema: [
+                            { name: 'homeTeam', title: 'Home Team Offsides', type: 'number' },
+                            { name: 'awayTeam', title: 'Away Team Offsides', type: 'number' },
+                        ],
+                    },
+                ],
+            },
+            { name: 'weatherConditions', title: 'Weather Conditions', type: 'text' },
+            { name: 'notableEvents', title: 'Notable Events', type: 'tags', itemType: 'text' },
+            { name: 'durationMinutes', title: 'Duration (Minutes)', type: 'number' },
+            { name: 'venue', title: 'Venue', type: 'text' },
+            {
+                name: 'matchOfficials',
+                title: 'Match Officials',
+                type: 'object',
+                schema: [
+                    { name: 'role', title: 'Match Official Role', type: 'text' },
+                    { name: 'official', title: 'Match Official', type: 'text' },
+                ],
+            },
+            {
+                name: 'injuries',
+                title: 'Injuries',
+                type: 'object',
+                schema: [
+                    { name: 'player', title: 'Injured Player', type: 'text' },
+                    { name: 'description', title: 'Injury Description', type: 'text' },
+                    { name: 'minute', title: 'Injury Minute', type: 'number' },
+                ],
+            },
+            { name: 'complaints', title: 'Complaints', type: 'list', itemType: 'textarea' },
+        ],
+    },
 
     {
         path: "teams",
@@ -534,7 +642,8 @@ export const AdminResources = [
         icon: FaGolfBall,
         sidePanel: false,
         type: "crudGrid",
-        displayComponent:"GridCard1",
+        displayComponent: "GridCard1",
+        add: true,
         edit: true,
         view: true,
         delete: true,

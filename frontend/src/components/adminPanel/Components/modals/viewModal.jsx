@@ -12,8 +12,15 @@ const viewModal = ({ isOpen, onRequestClose, selectedItem, schema }) => {
             margin: 'auto',
         },
         overlay: {
+            position: "fixed",
+            inset: "0",
+            zIndex: " 50",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: " center",
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        },
+          }
+      
     };
 
 

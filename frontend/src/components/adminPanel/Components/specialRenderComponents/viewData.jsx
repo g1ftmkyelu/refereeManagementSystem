@@ -7,11 +7,20 @@ const ViewData = ({ schema, data }) => {
         // Update the displayData whenever 'data' prop changes
         setDisplayData(data);
     }, [data]);
+
+    const shouldHideField = (value) => {
+        return typeof value === 'object'; // Hide if the field is an object
+    };
+
     return (
         <div style={{ border: '1px solid #ddd', padding: '10px', borderRadius: '5px', background: '#f9f9f9' }}>
             {schema.map((field) => {
                 const { name, title, type } = field;
                 const fieldValue = data[name];
+
+                if (shouldHideField(fieldValue)) {
+                    return null; // Skip rendering this field
+                }
 
                 switch (type) {
                     case 'range':
@@ -45,7 +54,6 @@ const ViewData = ({ schema, data }) => {
                                 </div>
                             </div>
                         );
-
                     default:
                         return (
                             <div key={name} style={{ marginBottom: '10px' }}>

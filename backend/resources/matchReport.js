@@ -9,36 +9,36 @@ const matchReportSchema = new Schema(
       required: true,
     },
     summary: String,
-    statistics: {
-      goals: {
-        homeTeam: Number,
-        awayTeam: Number,
-      },
-      possession: {
-        homeTeam: String,
-        awayTeam: String,
-      },
-      shots: {
-        homeTeam: Number,
-        awayTeam: Number,
-      },
-      shotsOnTarget: {
-        homeTeam: Number,
-        awayTeam: Number,
-      },
-      fouls: {
-        homeTeam: Number,
-        awayTeam: Number,
-      },
-      corners: {
-        homeTeam: Number,
-        awayTeam: Number,
-      },
-      offsides: {
-        homeTeam: Number,
-        awayTeam: Number,
-      },
+
+    goals: {
+      homeTeam: Number,
+      awayTeam: Number,
     },
+    possession: {
+      homeTeam: String,
+      awayTeam: String,
+    },
+    shots: {
+      homeTeam: Number,
+      awayTeam: Number,
+    },
+    shotsOnTarget: {
+      homeTeam: Number,
+      awayTeam: Number,
+    },
+    fouls: {
+      homeTeam: Number,
+      awayTeam: Number,
+    },
+    corners: {
+      homeTeam: Number,
+      awayTeam: Number,
+    },
+    offsides: {
+      homeTeam: Number,
+      awayTeam: Number,
+    },
+
 
     weatherConditions: String,
     notableEvents: [String],

@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import DynamicForm from '../specialRenderComponents/dynamicForm';
 import { FaTimes } from 'react-icons/fa';
 
-const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema, onDataFromGrandchild}) => {
+const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema, onDataFromGrandchild }) => {
 
   const customStyles = {
     content: {
@@ -11,12 +11,16 @@ const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema
       maxHeight: '900px',
       margin: 'auto',
     },
- overlay: {
+    overlay: {
+      position: "fixed",
+      inset: "0",
+      zIndex: " 50",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: " center",
       backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      width:'100vw',
-      height:'100vh'
-      
     }
+
   };
 
 
@@ -30,19 +34,19 @@ const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema
       style={customStyles}
     >
       <div onClick={onRequestClose}>
-        <FaTimes style={{ float: 'right' }}  size={30} />
+        <FaTimes style={{ float: 'right' }} size={30} />
       </div>
       {selectedItem && (
         <div style={{ marginTop: "60px" }}>
-   
 
-            <DynamicForm
-              schema={schema}
-              data={selectedItem}
-              action={action}
-              onDataFromGrandchild={onDataFromGrandchild}
-              title={`${action} ${entity}`}
-            />
+
+          <DynamicForm
+            schema={schema}
+            data={selectedItem}
+            action={action}
+            onDataFromGrandchild={onDataFromGrandchild}
+            title={`${action} ${entity}`}
+          />
 
         </div>
       )}

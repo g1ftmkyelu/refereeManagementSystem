@@ -1,18 +1,36 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
-// Styling for the modal (you can customize it further)
+
+// Styling for the modal (customized for improved appearance)
 const modalStyle = {
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 1000,
+  },
   content: {
-    width: '100vw',
-    height: '100vh',
-    top: 0, // Remove any top spacing
-    left: 0, // Remove any left spacing
-    right: 0, // Remove any right spacing
-    bottom: 0, // Remove any bottom spacing
-    margin: 0, // Remove margin
-    padding: 0, // Remove padding
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    minWidth: '80%',
+    minHeight: '80%',
+    padding: '20px',
     border: 'none',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    overflow: 'auto',
+    outline: 'none',
+    backgroundColor: 'white',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+    padding: '5px 10px',
+    border: 'none',
+    borderRadius: '4px',
+    backgroundColor: '#ccc',
+    cursor: 'pointer',
   },
 };
 
@@ -29,7 +47,7 @@ const Injectible = ({ component, buttonCaption, ButtonIcon, isFullScreen }) => {
 
   return (
     <div>
-      <button onClick={openModal}>
+      <button className='p-2 bg-lime-700 flex items-center m-2 rounded-sm' onClick={openModal}>
         <ButtonIcon /> {buttonCaption}
       </button>
       <Modal
@@ -37,10 +55,10 @@ const Injectible = ({ component, buttonCaption, ButtonIcon, isFullScreen }) => {
         onRequestClose={closeModal}
         style={modalStyle}
         contentLabel="Injected Modal"
-        shouldCloseOnOverlayClick={true} // Close modal when clicking outside of it
+        shouldCloseOnOverlayClick={true}
       >
-        <button onClick={closeModal} style={{ float: 'left' }}>
-          {isFullScreen ? 'Back' : 'Close'} {/* Change label based on isFullScreen */}
+        <button onClick={closeModal} style={modalStyle.closeButton}>
+          {isFullScreen ? 'Back' : 'Close'}
         </button>
         {component}
       </Modal>

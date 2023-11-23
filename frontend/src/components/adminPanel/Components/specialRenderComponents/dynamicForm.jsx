@@ -7,8 +7,13 @@ import moment from 'moment';
 import { RiImageAddFill, RiEdit2Fill } from 'react-icons/ri'; // Import the desired React Icons
 import TagsInput from './inputComponents/TagsInput';
 import FileInput from './inputComponents/FileInput';
+import Crud from '../coreComponents/Crud';
+import Injectible from '../utilityComponents/Injectible';
+import { Fa500Px, FaArrowAltCircleDown } from 'react-icons/fa';
+import NestedObjectInput from './inputComponents/NestedObjectInput';
+import DynamicCRUD from './inputComponents/NestedObjectInput';
 
-const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
+const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title, rdata }) => {
     const [updateMode, setUpdateMode] = useState(false);
     const [formData, setFormData] = useState(data || {});
 
@@ -45,7 +50,7 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
             <div className=' flex items-center justify-center content-center '>
                 <form className=' w-full' onSubmit={handleSubmit}>
                     {schema.map((field) => {
-                        const { name, title, type } = field;
+                        const { name, title, type, schema } = field;
                         switch (type) {
                             case 'text':
                                 return (
@@ -325,6 +330,33 @@ const DynamicForm = ({ schema, data, action, onDataFromGrandchild, title }) => {
                                         />
                                     </div>
                                 );
+                            // Existing import statements...
+
+                            // Update the 'case' block for 'object' types in your DynamicForm component
+                            case 'object':
+                                return (
+                                    <div key={name}>
+                                        <Injectible
+                                            schema={schema}
+                                            data={formData[name] || {}} // Pass data to the DynamicCRUD component
+                                            ButtonIcon={FaArrowAltCircleDown}
+                                            buttonCaption={name}
+                                            component={
+                                                <DynamicCRUD
+                                                    schema={schema} // Pass the schema for the nested object
+                                                    nestedData={formData[name] || []} // Pass the data for the nested object
+                                                    onSubmit={(updatedNestedData) =>
+                                                        setFormData({
+                                                            ...formData,
+                                                            [name]: updatedNestedData, // Update the form data with the modified nested data
+                                                        })
+                                                    }
+                                                />
+                                            }
+                                        />
+                                    </div>
+                                );
+
                             default:
                                 return null;
                         }

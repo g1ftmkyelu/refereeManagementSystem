@@ -8,6 +8,7 @@ import {
     FaRegCalendarAlt,
     FaPlayCircle,
     FaRegTimesCircle,
+    FaFileContract,
 } from "react-icons/fa";
 import {
 
@@ -218,7 +219,58 @@ export const MatchCommisonerResources = [
 
 
 
+{
+path:"reports",
+dataSource:"https://refs-29ss.onrender.com/match-reports",
+icon:FaFileContract,
+sidePanel:false,
+type:"crudGrid",
+schema: [
+    { name: "match", title: "Match", type: "text" },
+    { name: "summary", title: "Summary", type: "text" },
+    {
+      name: "statistics",
+      title: "Statistics",
+      type: "subschema",
+      subschema: [
+        { name: "goals.homeTeam", title: "Goals - Home Team", type: "number" },
+        { name: "goals.awayTeam", title: "Goals - Away Team", type: "number" },
+        { name: "possession.homeTeam", title: "Possession - Home Team", type: "text" },
+        { name: "possession.awayTeam", title: "Possession - Away Team", type: "text" },
 
+      ]
+    },
+    // ... other fields
+    {
+      name: "matchOfficials",
+      title: "Match Officials",
+      type: "array",
+      subschema: [
+        { name: "role", title: "Match Official Role", type: "text" },
+        {
+          name: "official",
+          title: "Match Official",
+          type: "reference"
+        }
+      ]
+    },
+    {
+      name: "injuries",
+      title: "Injuries",
+      type: "array",
+      subschema: [
+        { name: "player", title: "Injured Player", type: "reference" },
+        { name: "description", title: "Injury Description", type: "text" },
+        { name: "minute", title: "Injury Minute", type: "number" }
+      ]
+    },
+    { name: "complaints", title: "Complaints", type: "array" },
+    { name: "createdAt", title: "Created At", type: "date" },
+    { name: "updatedAt", title: "Updated At", type: "date" }
+  ],
+  
+
+},
 
 
 
