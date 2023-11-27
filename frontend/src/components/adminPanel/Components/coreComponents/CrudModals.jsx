@@ -46,7 +46,7 @@ const CrudModals = ({
           toast
         )
       }
-     
+     rdata={rdata}
 
     />
 
@@ -57,6 +57,7 @@ const CrudModals = ({
       action={action}
       entity={rdata.path}
       schema={rdata.schema}
+      rdata={rdata}
       onDataFromGrandchild={(data) =>
         handleDataFromGrandchild(
           data,

@@ -6,8 +6,13 @@ import CrudTab from "../crudComponents/crudTab";
 import Home from "../specialRenderComponents/inputComponents/Home";
 import DynamicWizard from '../specialRenderComponents/MyDynamicWizard';
 import ReportRenderer from "../specialRenderComponents/ReportRenderer";
+import MatchReportRender from '../specialRenderComponents/matchReportRender';
+import Complaints from "../specialRenderComponents/Complaints";
+
 
 function ResourceRender({ data }) {
+
+  console.log(data);
   let componentToRender;
 
   switch (data.type) {
@@ -32,12 +37,18 @@ function ResourceRender({ data }) {
     case 'report':
        componentToRender = <ReportRenderer rdata={data} />
     break;
+    case 'matchreport':
+      componentToRender = <MatchReportRender rdata={data} />
+   break;
+   case 'matchcomplaint':
+    componentToRender = <Complaints rdata={data} />
+ break;
     default:
       componentToRender = <Home metrics={data.metrics} />; // Render nothing if the type is not recognized
   }
 
   return (
-    <div className="bg-gray-200 pt-6 h-screen">
+    <div className="bg-gray-200 pt-6 w-full h-full">
       {componentToRender}
     </div>
   );

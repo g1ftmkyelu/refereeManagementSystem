@@ -3,15 +3,10 @@ const Schema = mongoose.Schema;
 
 const complaintchema = new Schema(
   {
-    complainer: {
-      type: String,
-      required: true,
-    },
-    complainee: {
-      type: String,
-      required: true,
-    },
-    complaint: { type: String },
+    matchTitle: String,
+    reporter: String,
+    title: String,
+    complaint: String,
   },
   {
     timestamps: true,

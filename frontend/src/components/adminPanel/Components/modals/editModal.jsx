@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import DynamicForm from '../specialRenderComponents/dynamicForm';
 import { FaTimes } from 'react-icons/fa';
 
-const EditModal = ({ isOpen, onRequestClose, selectedItem, schema, onDataFromGrandchild }) => {
+const EditModal = ({ isOpen, onRequestClose, selectedItem, schema, onDataFromGrandchild, rdata }) => {
     const customStyles = {
         content: {
             maxWidth: '700px',
@@ -37,7 +37,7 @@ const EditModal = ({ isOpen, onRequestClose, selectedItem, schema, onDataFromGra
             {selectedItem && (
                 <div>
                     {/* Add your modal content here */}
-                    <DynamicForm schema={schema} data={selectedItem} onDataFromGrandchild={onDataFromGrandchild} title={`Edit Item`} />
+                    <DynamicForm schema={schema} data={selectedItem} onDataFromGrandchild={onDataFromGrandchild} title={`Edit Item`} rdata={rdata} />
                 </div>
             )}
         </Modal>

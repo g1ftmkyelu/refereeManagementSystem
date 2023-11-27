@@ -63,7 +63,7 @@ const GridCard1 = ({ data }) => {
                 </div>
 
                 <div className="flex items-center justify-center">
-                    <h1 className="text-6xl font-extrabold mx-4">~VS~</h1>
+                    <h1 className="text-6xl font-extrabold mx-4">-VS-</h1>
                 </div>
 
                 <div className="flex flex-col items-center justify-center space-y-4">
@@ -90,7 +90,7 @@ const GridCard1 = ({ data }) => {
                     {data.status}
                 </h1>
                 <h1 className="text-lg font-bold">{data.venue}</h1>
-                <h1 className="text-4xl font-extrabold mt-2">{`${0}-${0}`}</h1>
+               
             </div>
 
         </div>

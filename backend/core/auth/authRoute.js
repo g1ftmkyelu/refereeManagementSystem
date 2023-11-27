@@ -69,10 +69,10 @@ function setupAuth(resource) {
   //get user
 
   router.get("/user", auth, async (req, res) => {
-    const username = req.user;
+    const fullname = req.user;
     try {
 
-      const User = await userModel.findOne({ username: username });
+      const User = await userModel.findOne({ fullname: fullname });
       return res.status(200).json(User);
 
     } catch (error) {
@@ -84,17 +84,17 @@ function setupAuth(resource) {
   // Login a user
   router.post("/login", async (req, res) => {
     try {
-      const { username, password } = req.body;
-      // Find the user in the database by their username or email
+      const { fullname, password } = req.body;
+      // Find the user in the database by their fullname or email
       const user = await userModel.findOne({
         $or: [
-          { username },
-          { email: username }, // Assuming email field exists in the user model
+          { fullname },
+          { email: fullname }, // Assuming email field exists in the user model
         ],
       });
 
       if (!user) {
-        return res.status(401).json({ error: "Invalid username or password" });
+        return res.status(401).json({ error: "Invalid fullname or password" });
       }
 
       // Compare the provided password with the stored hashed password
@@ -103,7 +103,7 @@ function setupAuth(resource) {
       if (passwordMatch) {
 
         const accessToken = jwt.sign(
-          user.username,
+          user.fullname,
           process.env.ACCESS_TOKEN_SECRET
         );
         res.status(200).json({

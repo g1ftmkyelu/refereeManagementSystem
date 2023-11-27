@@ -9,7 +9,6 @@ const teamSchema = new Schema(
     },
     players: [{ type: String }],
     coach: { type: String },
-    homeVenue: { type: String },
     logo: { type: String },
   },
   {

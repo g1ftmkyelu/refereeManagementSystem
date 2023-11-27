@@ -20,10 +20,10 @@ const DashboardTopBar = ({ handleLogOut, userData }) => {
             onClick={toggleDropdown}
             className="text-white bg-gray-600 w-8 h-8 rounded-full flex items-center justify-center"
           >
-            {userData.username[0]}
+            {userData.fullname[0]}
           </div>
           <span className='mx-2'>
-            <h5 className="text-lg ">{userData.firstName+" "+userData.lastName}</h5>
+            <h5 className="text-lg ">{userData.fullname}</h5>
             <p className='text-sm'>{userData.role}</p>
           </span>
           <div className="relative ml-4 cursor-pointer">

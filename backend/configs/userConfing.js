@@ -1,5 +1,5 @@
 module.exports = {
-  username: {
+  fullname: {
     type: String,
     required: true,
     unique: true,
@@ -12,14 +12,6 @@ module.exports = {
     trim: true,
   },
   password: {
-    type: String,
-    required: true,
-  },
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
     type: String,
     required: true,
   },
@@ -46,6 +38,6 @@ module.exports = {
     type: String,
     default:
       "https://www.seekpng.com/png/small/143-1435868_headshot-silhouette-person-placeholder.png",
-    required: true,
+    required: false,
   },
 };

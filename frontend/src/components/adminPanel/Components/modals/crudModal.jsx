@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import DynamicForm from '../specialRenderComponents/dynamicForm';
 import { FaTimes } from 'react-icons/fa';
 
-const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema, onDataFromGrandchild }) => {
+const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema, onDataFromGrandchild, rdata }) => {
 
   const customStyles = {
     content: {
@@ -46,6 +46,7 @@ const AddModal = ({ isOpen, onRequestClose, selectedItem, action, entity, schema
             action={action}
             onDataFromGrandchild={onDataFromGrandchild}
             title={`${action} ${entity}`}
+            rdata={rdata}
           />
 
         </div>

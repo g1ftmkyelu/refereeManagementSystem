@@ -7,7 +7,7 @@ const modalStyle = {
     zIndex: 1000,
   },
 
-  
+
   content: {
     position: 'absolute',
     top: '0',
@@ -19,10 +19,10 @@ const modalStyle = {
     overflow: 'auto',
     outline: 'none',
     backgroundColor: 'white',
-    display: 'flex', 
-    flexDirection: 'column', 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
 
@@ -39,32 +39,38 @@ const modalStyle = {
 };
 
 const Injectible = ({ component, buttonCaption, ButtonIcon, isFullScreen }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => {
-    setModalIsOpen(true);
+  const openMyModal = () => {
+    setModalOpen(true);
   };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const closeMyModal = () => {
+    setModalOpen(false);
   };
 
   return (
     <div>
-      <button className='p-2 bg-lime-700 flex items-center m-2 rounded-sm' onClick={openModal}>
-        <ButtonIcon /> {buttonCaption}
+      <button
+        className="px-4 py-2 bg-green-600 text-white flex items-center justify-center rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+        onClick={openMyModal}
+      >
+        <ButtonIcon className="w-5 h-5 mr-2" /> {/* Assuming ButtonIcon is an SVG icon */}
+        {buttonCaption}
       </button>
+
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={modalOpen}
+        onRequestClose={closeMyModal}
         style={modalStyle}
         contentLabel="Injected Modal"
         shouldCloseOnOverlayClick={true}
         className='flex justify-center content-center items-center'
       >
-        <button onClick={closeModal} style={modalStyle.closeButton}>
+        <button onClick={closeMyModal} style={modalStyle.closeButton}>
           {isFullScreen ? 'Back' : 'Close'}
         </button>
+        <div className="mt-28"></div>
         {component}
       </Modal>
     </div>

@@ -135,6 +135,7 @@ const DynamicWizard = ({ rdata }) => {
         </div>
       ) : (
         <div className="max-w-7xl mx-auto mt-12 p-8 bg-white rounded-md shadow-md">
+          <h1 className='text-3xl font-extrabold mb-12'>{rdata.path}</h1>
           <Stepper
             steps={steps.map((step) => ({ title: step.title }))}
             activeStep={currentStep}
@@ -146,46 +147,64 @@ const DynamicWizard = ({ rdata }) => {
             completeColor="#28A745"
             defaultBarColor="#E0E0E0"
             completeBarColor="#E0E0E0"
-    
 
           />
           <div className="mb-8 mt-4">
             <h2 className="text-2xl font-semibold mb-6">{`Step ${currentStep + 1}: ${steps[currentStep].title}`}</h2>
             {stepFields.map((field) =>
               field.type === 'selectAlt' ? (
-                <SelectFieldAlt
-                  title={field.name}
-                  value={formData[field.name]}
-                  onChange={(value) => handleChange(field.name, value)}
-                  data={field.data}
-                />
+                <div key={field.name}>
+                  <label className="form-label" htmlFor={field.name}>
+                    {field.name}
+                  </label>
+                  <SelectFieldAlt
+                    title={field.name}
+                    value={formData[field.name]}
+                    onChange={(value) => handleChange(field.name, value)}
+                    data={field.data}
+                  /></div>
               ) : field.type === 'select' ? (
-                <SelectField
-                  key={field.name}
-                  title={steps[currentStep].title}
-                  value={formData[field.name]}
-                  onChange={(value) => handleChange(field.name, value)}
-                  dataSource={field.dataSource}
-                />
+                <div key={field.name}>
+                  <label className="form-label" htmlFor={field.name}>
+                    {field.name}
+                  </label>
+                  <SelectField
+                    key={field.name}
+                    title={steps[currentStep].title}
+                    value={formData[field.name]}
+                    onChange={(value) => handleChange(field.name, value)}
+                    dataSource={field.dataSource}
+                    displayKey={field.displayKey}
+                  /></div>
               ) : field.type === 'apiselect' ? (
-                <ApiSelect
-                  key={field.name}
-                  title={steps[currentStep].title}
-                  value={formData[field.name]}
-                  onChange={(value) => handleChange(field.name, value)}
-                  displayModeKey={field.displaykey}
-                  dataSource={field.dataSource}
-                />
+                <div key={field.name}>
+                  <label className="form-label" htmlFor={field.name}>
+                    {field.name}
+                  </label>
+                  <ApiSelect
+                    key={field.name}
+                    title={steps[currentStep].title}
+                    value={formData[field.name]}
+                    onChange={(value) => handleChange(field.name, value)}
+                    displayModeKey={field.displaykey}
+                    dataSource={field.dataSource}
+                  />
+                </div>
               ) : field.type === 'textarea' ? (
-                <textarea
-                  key={field.name}
-                  placeholder={field.placeholder || ''}
-                  value={formData[field.name]}
-                  onChange={(e) => handleChange(field.name, e.target.value)}
-                  onBlur={handleBlur}
-                  required
-                  className="border border-gray-300 p-3 w-full rounded-md mb-4"
-                />
+                <div key={field.name}>
+                  <label className="form-label" htmlFor={field.name}>
+                    {field.name}
+                  </label>
+                  <textarea
+                    key={field.name}
+                    placeholder={field.placeholder || ''}
+                    value={formData[field.name]}
+                    onChange={(e) => handleChange(field.name, e.target.value)}
+                    onBlur={handleBlur}
+                    required
+                    className="border border-gray-300 p-3 w-full rounded-md mb-4"
+                  />
+                </div>
               ) : field.type === 'tags' ? (
                 <div key={field.name}>
                   <label className="form-label" htmlFor={field.name}>
@@ -197,6 +216,24 @@ const DynamicWizard = ({ rdata }) => {
                     onUpdateTags={(tags) => setTagData({ ...tagData, [field.name]: tags })} // Handle tag updates
                   />
                 </div>
+
+              ) : field.type === 'w-range' ? (
+                <div key={field.name} className="mb-6">
+                  <label className="block text-sm font-bold mb-1" htmlFor={field.name}>
+                    {field.name}
+                  </label>
+                  <output className='font-bold text-xl'>{formData[field.name]}/10</output> {/* Display selected value */}
+                  <input
+                    type="range"
+                    min={1}
+                    max={10}
+                    value={formData[field.name]}
+                    onChange={(e) => handleChange(field.name, e.target.value)}
+                    className="block w-full h-5 rounded-full bg-gray-300 appearance-none cursor-pointer mt-2"
+                    style={{ outline: 'none' }}
+                  />
+                </div>
+
 
               ) : field.type === 'image' ? (
                 <div key={field.name}>
@@ -211,16 +248,21 @@ const DynamicWizard = ({ rdata }) => {
                 </div>
 
               ) : (
-                <input
-                  key={field.name}
-                  type={field.type || 'text'}
-                  placeholder={field.placeholder || ''}
-                  value={formData[field.name]}
-                  onChange={(e) => handleChange(field.name, e.target.value)}
-                  className="border border-gray-300 p-3 w-full rounded-md mb-4"
-                  onBlur={handleBlur}
-                  required
-                />
+                <div key={field.name}>
+                  <label className="form-label" htmlFor={field.name}>
+                    {field.name}
+                  </label>
+                  <input
+                    key={field.name}
+                    type={field.type || 'text'}
+                    placeholder={field.placeholder || ''}
+                    value={formData[field.name]}
+                    onChange={(e) => handleChange(field.name, e.target.value)}
+                    className="border border-gray-300 p-3 w-full rounded-md mb-4"
+                    onBlur={handleBlur}
+                    required
+                  />
+                </div>
               )
             )}
 

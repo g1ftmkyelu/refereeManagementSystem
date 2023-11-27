@@ -70,7 +70,7 @@ const FileInput = ({ formData, fieldName, setFormData }) => {
                         name={fieldName}
                         onChange={handleFileInputChange}
                         className={'p-3 m5 bg-gray-300 rounded-md w-full'}
-                        required
+              
                     />
                     {selectedFile && (
                         <button onClick={handleUpload} className="bg-blue-500 text-white p-2 rounded-md mt-2">

@@ -1,24 +1,24 @@
 import {
     FaUserCog,
     FaTimesCircle,
-    FaFolderPlus,
     FaFootballBall,
-    FaGolfBall,
     FaCalendarPlus,
     FaRegCalendarAlt,
     FaPlayCircle,
     FaRegTimesCircle,
-    FaFileContract,
+    FaCogs,
+    FaChartLine,
+
 } from "react-icons/fa";
 import {
 
     BiCheckDouble,
     BiPlayCircle,
-    BiSolidGroup,
     BiTimer,
 } from "react-icons/bi";
 import { IoMdFootball } from "react-icons/io";
 import { BsGrid } from "react-icons/bs";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 export const MatchCommisonerResources = [
     {
@@ -214,63 +214,130 @@ export const MatchCommisonerResources = [
 
 
 
-
-
-
-
-
-{
-path:"reports",
-dataSource:"https://refs-29ss.onrender.com/match-reports",
-icon:FaFileContract,
-sidePanel:false,
-type:"crudGrid",
-schema: [
-    { name: "match", title: "Match", type: "text" },
-    { name: "summary", title: "Summary", type: "text" },
     {
-      name: "statistics",
-      title: "Statistics",
-      type: "subschema",
-      subschema: [
-        { name: "goals.homeTeam", title: "Goals - Home Team", type: "number" },
-        { name: "goals.awayTeam", title: "Goals - Away Team", type: "number" },
-        { name: "possession.homeTeam", title: "Possession - Home Team", type: "text" },
-        { name: "possession.awayTeam", title: "Possession - Away Team", type: "text" },
+        path: "Add match report",
+        type: "wizard",
+        dataSource: "https://refs-29ss.onrender.com/match-reports",
+        InjectibleResourceQueryField: "matchTitle",
+        icon: FaChartLine,
+        menu: { name: "Match Management", icon: FaFootballBall },
+        steps: [
+            {
+                title: "Select match",
+                fields: [
+                    {
+                        name: "matchTitle",
+                        type: "select",
+                        dataSource: "https://refs-29ss.onrender.com/matches",
+                        displayKey: "matchTitle"
+                    },
+                ]
+            },
+            {
+                title: "input match stats",
+                fields: [
+                    {
+                        name: "homeTeamGoals",
+                        type: "number",
+                        placeholder: "enter home team goals"
+                    },
+                    {
+                        name: "awayTeamGoals",
+                        type: "number",
+                        placeholder: "enter away team goals"
+                    },
+                    {
+                        name: "homeTeamPossetion",
+                        type: "number",
+                        placeholder: "enter home team possession"
+                    },
+                    {
+                        name: "awayTeamPossession",
+                        type: "number",
+                        placeholder: "enter away team possession"
+                    },
+                    {
+                        name: "homeTeamShots",
+                        type: "number",
+                        placeholder: "enter home team shots"
+                    },
+                    {
+                        name: "awayTeamShots",
+                        type: "number",
+                        placeholder: "enter away team shots"
+                    },
 
-      ]
-    },
-    // ... other fields
-    {
-      name: "matchOfficials",
-      title: "Match Officials",
-      type: "array",
-      subschema: [
-        { name: "role", title: "Match Official Role", type: "text" },
-        {
-          name: "official",
-          title: "Match Official",
-          type: "reference"
-        }
-      ]
-    },
-    {
-      name: "injuries",
-      title: "Injuries",
-      type: "array",
-      subschema: [
-        { name: "player", title: "Injured Player", type: "reference" },
-        { name: "description", title: "Injury Description", type: "text" },
-        { name: "minute", title: "Injury Minute", type: "number" }
-      ]
-    },
-    { name: "complaints", title: "Complaints", type: "array" },
-    { name: "createdAt", title: "Created At", type: "date" },
-    { name: "updatedAt", title: "Updated At", type: "date" }
-  ],
-  
+                ]
+            },
+            {
+                title: "input match stats(Continued)",
+                fields: [
+                    {
+                        name: "homeTeamFouls",
+                        type: "number",
+                        placeholder: "enter home team fouls"
+                    },
+                    {
+                        name: "awayTeamFouls",
+                        type: "number",
+                        placeholder: "enter away team fouls"
+                    },
+                    {
+                        name: "homeTeamCorners",
+                        type: "number",
+                        placeholder: "enter home team corners"
+                    },
+                    {
+                        name: "awayTeamCorners",
+                        type: "number",
+                        placeholder: "enter away team corners"
+                    },
+                    {
+                        name: "homeTeamOffsides",
+                        type: "number",
+                        placeholder: "enter home team offsides"
+                    },
+                    {
+                        name: "awayTeamOffsides",
+                        type: "number",
+                        placeholder: "enter away team offsides"
+                    },
 
-},
+                ]
+            },
+            {
+                title: "input match details",
+                fields: [
+                    {
+                        name: "weatherConditions",
+                        type: "selectAlt",
+                        placeholder: "choose weather conditions",
+                        data: [
+                            "Rainy",
+                            "Cloudy",
+                            "Cold",
+                            "Hot"],
+                    },
+                    {
+                        name: "notableEvents",
+                        type: "tags",
+                        placeholder: "add notable events",
+                    },
+                    {
+                        name: "summary",
+                        type: "textarea",
+                        placeholder: "add match summary",
+                    },
+                ],
+            },
+
+        ],
+        successMessage: "success!",
+        successPath: "all matches",
+    },
+
+
+
 
 
 
@@ -281,21 +348,30 @@ schema: [
 
     {
         path: "profile",
-        dataSource: "https://refs-29ss.onrender.com/users",
-
+        dataSource: "https://refs-29ss.onrender.com/user",
         icon: FaUserCog,
         sidePanel: false,
         type: "singleton",
-        queryField: "_id",
-        queryValue: localStorage.getItem("id"),
-
+        menu: { name: "Settings", icon: FaCogs },
         schema: [
             { name: "Image", title: "Image", type: "file" },
-            { name: "username", title: "Username", type: "text" },
+            { name: "fullname", title: "fullname", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
+        ],
+    },
+    {
+        path: "change password",
+        dataSource: "https://refs-29ss.onrender.com/user",
+        icon: RiLockPasswordFill,
+        sidePanel: false,
+        type: "singleton",
+        menu: { name: "Settings", icon: FaCogs },
+        schema: [
+
+            { name: "cpassword", title: "enter current password", type: "password" },
+            { name: "newpassword", title: "new password", type: "password" },
+            { name: "confirmnewpass", title: "confirm new password", type: "password" },
         ],
     },
 ];

@@ -4,13 +4,15 @@ const Schema = mongoose.Schema;
 const matchSchema = new Schema(
     {
 
+        matchTitle: String,
         homeTeam: String,
         awayTeam: String,
         date: {
             type: Date,
             required: true,
         },
-        status:{
+        referee: String,
+        status: {
             type: String,
             enum: [
                 "Scheduled",
@@ -18,7 +20,6 @@ const matchSchema = new Schema(
                 "Completed",
                 "Cancelled"]
         },
-        venue: String,
     },
     {
         timestamps: true,

@@ -9,33 +9,14 @@ const config=  {
     icon: FaUserPlus,
     menu: { name: "Users", icon: FaUser },
     steps: [
+
       {
-        title: "Enter First Name",
+        title: "Enter fullname",
         fields: [
           {
-            name: "firstName",
+            name: "fullname",
             type: "text",
-            placeholder: "First Name",
-          },
-        ],
-      },
-      {
-        title: "Enter Last Name",
-        fields: [
-          {
-            name: "lastName",
-            type: "text",
-            placeholder: "Last Name",
-          },
-        ],
-      },
-      {
-        title: "Choose Username",
-        fields: [
-          {
-            name: "username",
-            type: "text",
-            placeholder: "Username",
+            placeholder: "fullname",
           },
         ],
       },
@@ -88,7 +69,7 @@ const config=  {
         ],
       },
       {
-        title: "Enter profile Image link",
+        title: "Enter profile Image link (optional)",
         fields: [
           {
             name: "Image",

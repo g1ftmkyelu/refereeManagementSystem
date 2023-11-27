@@ -8,7 +8,8 @@ const {
  MatchAssignments,
  MatchReports,
  Matches,
- Teams
+ Teams,
+ TrainingSession
 } = require("./resources");
 
 //DB Connection
@@ -20,7 +21,8 @@ const resources = [
   MatchAssignments,
   MatchReports,
   Matches,
-  Teams
+  Teams,
+  TrainingSession
 ];
 
 const app = express();

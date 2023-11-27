@@ -14,12 +14,13 @@ import { setId } from "../../../Redux/slices/idSlice";
 
 
 const schema = [
-  { name: "username", title: "email", type: "text" },
+  { name: "fullname", title: "email", type: "text" },
   { name: "password", title: "Password", type: "password" },
 
 ];
 
-const LoginPage = ({registerLink}) => {
+const LoginPage = ({ registerLink }) => {
+  const rdata={}
   const [dataFromGrandchild, setDataFromGrandchild] = useState({});
   const { token, loading } = useSelector((state) => state.auth);
   const nav = useNavigate();
@@ -54,7 +55,7 @@ const LoginPage = ({registerLink}) => {
   const handleDataFromGrandchild = (data) => {
     try {
 
-      handleLogin(data.mydata.username, data.mydata.password)
+      handleLogin(data.mydata.fullname, data.mydata.password)
 
 
     } catch (error) {
@@ -68,8 +69,8 @@ const LoginPage = ({registerLink}) => {
     nav('/dashboard')
   }
 
-  const handleLogin = (username, password) => {
-    dispatch(login({ username, password }))
+  const handleLogin = (fullname, password) => {
+    dispatch(login({ fullname, password }))
       .then((loginObject) => {
         toast.success(loginObject.payload.message, { position: "top-right" });
         fetchData()
@@ -100,19 +101,27 @@ const LoginPage = ({registerLink}) => {
     }}>
 
       {loading ? <Loader /> :
-        <div  className='h-screen w-screen flex items-center justify-center'
-        style={{
-          backgroundImage:"url(https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
+        <div className='h-screen w-screen flex flex-col items-center justify-center'
+          style={{
+            backgroundImage: "url(https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
         >
           <DynamicForm
             schema={schema}
             onDataFromGrandchild={handleDataFromGrandchild}
             title={'login'}
+            rdata={rdata}
           />
+
+          <div>
+            <h1 className=" text-lg font-bold">
+              Don't have an account?<br />
+              <Link className="text-blue-600 text-3xl" to={'/register'}>register</Link>
+            </h1>
+          </div>
 
         </div>
       }

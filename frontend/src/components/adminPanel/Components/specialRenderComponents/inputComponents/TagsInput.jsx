@@ -72,7 +72,6 @@ const TagsInput = ({ tags, placeholder, onUpdateTags }) => {
                     value={inputValue}
                     onChange={handleInputChange}
                     onKeyDown={handleInputKeyDown}
-                    required
                     className="border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-blue-500"
                 />
                 <button

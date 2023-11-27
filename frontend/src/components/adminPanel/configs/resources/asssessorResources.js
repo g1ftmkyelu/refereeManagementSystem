@@ -1,13 +1,8 @@
 import {
     FaUserCog,
     FaTimesCircle,
-    FaFolderPlus,
-    FaFootballBall,
-    FaGolfBall,
-    FaCalendarPlus,
-    FaRegCalendarAlt,
-    FaPlayCircle,
-    FaRegTimesCircle,
+    FaDumbbell,
+    FaCog,
 } from "react-icons/fa";
 import {
 
@@ -18,6 +13,7 @@ import {
 } from "react-icons/bi";
 import { IoMdFootball } from "react-icons/io";
 import { BsGrid } from "react-icons/bs";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 export const AssessorResources = [
     {
@@ -102,112 +98,29 @@ export const AssessorResources = [
 
 
     {
-        path: "Live matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Live",
-        icon: FaPlayCircle,
+        path: "training reports",
+        dataSource: "https://refs-29ss.onrender.com/training-sessions",
+        icon: FaDumbbell,
         sidePanel: false,
-        type: "crudGrid",
-        displayComponent:"GridCard1",
-  
-        view: true,
-      
-
-        menu: { name: "Match Management", icon: FaFootballBall },
+        edit: true,
+        delete: true,
+        type: "crud",
         schema: [
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            {
-                name: "status", title: "Status", type: "select",
-                options: [
-                    { label: "Scheduled", value: "Scheduled" },
-                    { label: "Live", value: "Live" },
-                    { label: "Completed", value: "Completed" },
-                    { label: "Cancelled", value: "Cencelled" }
-                ]
-            },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-    {
-        path: "upcoming matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Scheduled",
-        icon: FaCalendarPlus,
-        sidePanel: false,
-        type: "crudGrid",
-        displayComponent:"GridCard1",
-        view: true,
+            { name: "refereeName", title: "Referee Name", type: "text" },
+            { name: "date", title: "Date", type: "date" },
+            { name: "performance", title: "Perfomance", type: "number" },
+            { name: "cardioFitness", title: "Cardio Fitness", type: "number" },
+            { name: "strength", title: "Strength", type: "number" },
+            { name: "flexibility", title: "flexibility", type: "number" },
+            { name: "agility", title: "Agility", type: "number" },
+            { name: "endurance", title: "Endurance", type: "number" },
+            { name: "balance", title: "Balance", type: "number" },
+            { name: "speed", title: "Speed", type: "number" },
+            { name: "power", title: "Power", type: "number" },
+            { name: "coordination", title: "Coordination", type: "number" },
+            { name: "observation", title: "Observation", type: "richtextarea" }
 
 
-        menu: { name: "Match Management", icon: FaFootballBall },
-        schema: [
-
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            {
-                name: "status", title: "Status", type: "select",
-                options: [
-                    { label: "Scheduled", value: "Scheduled" },
-                    { label: "Live", value: "Live" },
-                    { label: "Completed", value: "Completed" },
-                    { label: "Cancelled", value: "Cencelled" }
-                ]
-            },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-
-
-
-    {
-        path: "completed matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Completed",
-        icon: FaRegCalendarAlt,
-        sidePanel: false,
-        type: "crudGrid",
-        displayComponent:"GridCard1",
-        view: true,
-
-
-        menu: { name: "Match Management", icon: FaFootballBall },
-        schema: [
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            {
-                name: "status", title: "Status", type: "select",
-                options: [
-                    { label: "Scheduled", value: "Scheduled" },
-                    { label: "Live", value: "Live" },
-                    { label: "Completed", value: "Completed" },
-                    { label: "Cancelled", value: "Cencelled" }
-                ]
-            },
-            { name: "venue", title: "Venue", type: "text" },
-        ],
-    },
-
-    {
-        path: "cancelled matches",
-        dataSource: "https://refs-29ss.onrender.com/matches?status=Cancelled",
-        icon: FaRegTimesCircle,
-        sidePanel: false,
-        type: "crudGrid",
-        displayComponent:"GridCard1",
-        view: true,
-
-        menu: { name: "Match Management", icon: FaFootballBall },
-        schema: [
-            { name: "homeTeam", title: "Home Team", type: "text" },
-            { name: "awayTeam", title: "Away Team", type: "text" },
-            {
-                name: "status", title: "Status", type: "select",
-                options: [
-                    { label: "Scheduled", value: "Scheduled" },
-                    { label: "Live", value: "Live" },
-                    { label: "Completed", value: "Completed" },
-                    { label: "Cancelled", value: "Cencelled" }
-                ]
-            },
-            { name: "venue", title: "Venue", type: "text" },
         ],
     },
 
@@ -229,21 +142,30 @@ export const AssessorResources = [
 
     {
         path: "profile",
-        dataSource: "https://refs-29ss.onrender.com/users",
-
+        dataSource: "https://refs-29ss.onrender.com/user",
         icon: FaUserCog,
         sidePanel: false,
         type: "singleton",
-        queryField: "_id",
-        queryValue: localStorage.getItem("id"),
-
+        menu: { name: "Settings", icon: FaCog },
         schema: [
             { name: "Image", title: "Image", type: "file" },
-            { name: "username", title: "Username", type: "text" },
+            { name: "fullname", title: "fullname", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
+        ],
+    },
+    {
+        path: "change password",
+        dataSource: "https://refs-29ss.onrender.com/user",
+        icon: RiLockPasswordFill,
+        sidePanel: false,
+        type: "singleton",
+        menu: { name: "Settings", icon: FaCog },
+        schema: [
+
+            { name: "cpassword", title: "enter current password", type: "password" },
+            { name: "newpassword", title: "new password", type: "password" },
+            { name: "confirmnewpass", title: "confirm new password", type: "password" },
         ],
     },
 ];

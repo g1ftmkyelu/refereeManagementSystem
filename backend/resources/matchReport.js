@@ -3,67 +3,94 @@ const Schema = mongoose.Schema;
 
 const matchReportSchema = new Schema(
   {
-    match: {
-      type: String,
-      ref: "Match",
-      required: true,
-    },
+    matchTitle:String,
     summary: String,
-
-    goals: {
-      homeTeam: Number,
-      awayTeam: Number,
+    homeTeamGoals: {
+      type: Number,
+      default: 0,
+      required:false
     },
-    possession: {
-      homeTeam: String,
-      awayTeam: String,
+    awayTeamGoals: {
+      type: Number,
+      default: 0,
+      required:false
     },
-    shots: {
-      homeTeam: Number,
-      awayTeam: Number,
+    homeTeamPossession: {
+      type: Number,
+      default: 0,
+      required:false
     },
-    shotsOnTarget: {
-      homeTeam: Number,
-      awayTeam: Number,
-    },
-    fouls: {
-      homeTeam: Number,
-      awayTeam: Number,
-    },
-    corners: {
-      homeTeam: Number,
-      awayTeam: Number,
-    },
-    offsides: {
-      homeTeam: Number,
-      awayTeam: Number,
+    awayTeamPossession: {
+      type: Number,
+      default: 0,
+      required:false
     },
 
+    homeTeamShots: {
+      type:Number,
+      default: 0,
+      required:false
+    },
+    awayTeamShots: {
+      type:Number,
+      default: 0,
+      required:false
+    },
 
+    homeTeamFouls:  {
+      type:Number,
+      default: 0,
+      required:false
+    },
+    awayTeamFouls:  {
+      type:Number,
+      default: 0,
+      required:false
+    },
+    homeTeamYellowCards:  {
+      type:Number,
+      default: 0,
+      required:false
+    },
+    awayTeamYellowCards:  {
+      type:Number,
+      default: 0,
+      required:false
+    },
+
+    homeTeamRedCards:  {
+      type:Number,
+      default: 0,
+      required:false
+    },
+    awayTeamRedCards:  {
+      type:Number,
+      default: 0,
+      required:false
+    },
+
+    homeTeamCorners: {
+      type:Number,
+      default: 0,
+      required:false
+    },
+
+    awayTeamCorners:  {
+      type:Number,
+      default: 0,
+      required:false
+    },
+
+    homeTeamOffsides: {
+      type:Number,
+      default: 0,
+      required:false
+    },
+    awayTeamOffsides: Number,
     weatherConditions: String,
     notableEvents: [String],
     durationMinutes: Number,
-    venue: String,
-    matchOfficials: [
-      {
-        role: String,
-        official: {
-          type: String,
-          ref: "User",
-        },
-      },
-    ],
-    injuries: [
-      {
-        player: {
-          type: String,
-          ref: "User",
-        },
-        description: String,
-        minute: Number,
-      },
-    ],
-    complaints: [{ type: String }],
+
   },
   {
     timestamps: true,

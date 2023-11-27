@@ -1,45 +1,28 @@
 import {
-    FaNotesMedical,
     FaUserMd,
-    FaUserNurse,
-    FaProcedures,
-    FaPrescriptionBottleAlt,
-    FaHospital,
-    FaCalendarAlt,
-    FaFileMedical,
-    FaFileMedicalAlt,
-    FaList,
-    FaCalendarPlus,
-    FaCalendarCheck,
-    FaCalendarWeek,
-    FaCalendarTimes,
     FaUsers,
-    FaStethoscope,
-    FaPills,
-    FaVrCardboard,
     FaUser,
     FaUserPlus,
     FaChartLine,
-    FaCalendarDay,
     FaUserCog,
     FaUserShield,
     FaFolderPlus,
     FaGolfBall,
     FaFootballBall,
+    FaCogs,
+    FaDumbbell,
 } from "react-icons/fa";
 import {
-    BiArchive,
-    BiChart,
+
     BiFootball,
     BiSolidGroup,
-    BiUserCheck,
-    BiUserPin,
+
 } from "react-icons/bi";
-import { IoMdMedkit, IoIosMedkit, IoIosBasket } from "react-icons/io";
-import { RiShoppingBasket2Line, RiInputCursorMove } from "react-icons/ri";
+import {  RiLockPasswordFill } from "react-icons/ri";
 import { FiFileText } from "react-icons/fi";
-import { BsBox, BsCalendar2Month, BsGrid } from "react-icons/bs";
+import { BsBookmarkDash, BsBox, BsCalendar2Month, BsGraphUp, BsGrid } from "react-icons/bs";
 import { MdAccountTree, MdAttachMoney, MdBallot, MdPlaylistAddCheck, MdSearch, MdSupervisorAccount } from "react-icons/md";
+import CrudGrid from '../../Components/crudComponents/crudGrid';
 
 export const AdminResources = [
     {
@@ -88,20 +71,7 @@ export const AdminResources = [
                         },
                         show: true,
                     },
-                    {
-                        title: "Allocation Officers",
-                        path: "allocation-officers",
-                        icon: FaUserMd,
-                        dataSource:
-                            "https://refs-29ss.onrender.com/users/count?role=allocationofficer",
-                        dataType: "count",
-                        color: "blue",
-                        seeMore: true,
-                        onClick: () => {
-                            console.log("Clicked on Doctors");
-                        },
-                        show: true,
-                    },
+
                     {
                         title: "Match Commissioners",
                         path: "match-commissioner",
@@ -127,37 +97,14 @@ export const AdminResources = [
         icon: FaUserPlus,
         menu: { name: "Users", icon: FaUsers },
         steps: [
+
             {
-                title: "Enter First Name",
+                title: "Enter fullname",
                 fields: [
                     {
-                        name: "firstName",
+                        name: "fullname",
                         type: "text",
-                        placeholder: "First Name",
-                    },
-                ],
-                onClick: (e) => {
-                    e.preventDefault()
-                    console.log('onClick', 4)
-                }
-            },
-            {
-                title: "Enter Last Name",
-                fields: [
-                    {
-                        name: "lastName",
-                        type: "text",
-                        placeholder: "Last Name",
-                    },
-                ],
-            },
-            {
-                title: "Choose Username",
-                fields: [
-                    {
-                        name: "username",
-                        type: "text",
-                        placeholder: "Username",
+                        placeholder: "fullname",
                     },
                 ],
             },
@@ -210,7 +157,7 @@ export const AdminResources = [
                 ],
             },
             {
-                title: "Upload User ProfileImage",
+                title: "Enter profile Image link (optional)",
                 fields: [
                     {
                         name: "Image",
@@ -237,10 +184,8 @@ export const AdminResources = [
         menu: { name: "Users", icon: FaUsers },
         schema: [
             { name: "Image", title: "Image", type: "profile picture", type: "file" },
-            { name: "username", title: "User Name", type: "text" },
+            { name: "fullname", title: "User Name", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
         ],
     },
@@ -261,10 +206,8 @@ export const AdminResources = [
         menu: { name: "Users", icon: FaUsers },
         schema: [
             { name: "Image", title: "Image", type: "profile picture", type: "file" },
-            { name: "username", title: "User Name", type: "text" },
+            { name: "fullname", title: "User Name", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
         ],
     },
@@ -276,19 +219,48 @@ export const AdminResources = [
         type: "crudGrid",
 
         view: true,
-
+        edit:true,
         delete: true,
         fetchDataByQuery: true,
         queryField: "role",
         queryValue: "referee",
         menu: { name: "Users", icon: FaUsers },
+        hasInjectible: true,
+        InjectibleResourceQueryField:"refereeName",
+        InjectibleResources: [
 
+            {
+                path: "training sessions list",
+                dataSource: "https://refs-29ss.onrender.com/training-sessions",
+                icon: FaDumbbell,
+                sidePanel: false,
+                edit: true,
+                delete: true,
+                type: "crud",
+                menu: { name: "fitness", icon: FaDumbbell },
+                schema: [
+                    { name: "refereeName", title: "Referee Name", type: "text" },
+                    { name: "date", title: "Date", type: "date" },
+                    { name: "performance", title: "Perfomance", type: "number" },
+                    { name: "cardioFitness", title: "Cardio Fitness", type: "number" },
+                    { name: "strength", title: "Strength", type: "number" },
+                    { name: "flexibility", title: "flexibility", type: "number" },
+                    { name: "agility", title: "Agility", type: "number" },
+                    { name: "endurance", title: "Endurance", type: "number" },
+                    { name: "balance", title: "Balance", type: "number" },
+                    { name: "speed", title: "Speed", type: "number" },
+                    { name: "power", title: "Power", type: "number" },
+                    { name: "coordination", title: "Coordination", type: "number" },
+                    { name: "observation", title: "Observation", type: "richtextarea" }
+
+
+                ],
+            },
+        ],
         schema: [
             { name: "Image", title: "Image", type: "profile picture", type: "file" },
-            { name: "username", title: "User Name", type: "text" },
+            { name: "fullname", title: "User Name", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
         ],
     },
@@ -310,40 +282,13 @@ export const AdminResources = [
 
         schema: [
             { name: "Image", title: "Image", type: "profile picture", type: "file" },
-            { name: "username", title: "User Name", type: "text" },
+            { name: "fullname", title: "User Name", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
         ],
     },
 
 
-    {
-        path: "allocation-officers",
-        dataSource: "https://refs-29ss.onrender.com/users?role=allocationofficer",
-        icon: MdPlaylistAddCheck,
-        sidePanel: false,
-        type: "crudGrid",
-
-        view: true,
-
-
-        delete: true,
-        fetchDataByQuery: true,
-        queryField: "role",
-        queryValue: "allocationofficer",
-        menu: { name: "Users", icon: FaUsers },
-
-        schema: [
-            { name: "Image", title: "Image", type: "profile picture", type: "file" },
-            { name: "username", title: "User Name", type: "text" },
-            { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
-            { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
-        ],
-    },
 
     {
         path: "match-commissioner",
@@ -363,10 +308,8 @@ export const AdminResources = [
 
         schema: [
             { name: "Image", title: "Image", type: "profile picture", type: "file" },
-            { name: "username", title: "User Name", type: "text" },
+            { name: "fullname", title: "User Name", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
         ],
     },
@@ -411,18 +354,6 @@ export const AdminResources = [
             },
 
             {
-                title: "Team Home Venue",
-                fields: [
-                    {
-                        name: "homeVenue",
-                        type: "text",
-                        placeholder: "home Venue",
-                    },
-                ],
-            },
-
-
-            {
                 title: "Enter Team Logo",
                 fields: [
                     {
@@ -436,109 +367,7 @@ export const AdminResources = [
         successMessage: "team added successfully!",
         successPath: "teams",
     },
-    {
-        path: "match reports",
-        dataSource: "https://refs-29ss.onrender.com/match-reports",
-        icon: BiSolidGroup,
-        sidePanel: false,
-        type: "crud",
-        add: true,
-        view: true,
-        edit: true,
-        delete: true,
-        schema: [
-            { name: 'match', title: 'Match', type: 'text' },
-            { name: 'summary', title: 'Summary', type: 'textarea' },
-            {
-                name: 'goals',
-                title: 'Goals',
-                type: 'object',
-                schema: [
-                    { name: 'homeTeam', title: 'Home Team Goals', type: 'number' },
-                    { name: 'awayTeam', title: 'Away Team Goals', type: 'number' },
-                ],
-            },
-            {
-                name: 'possession',
-                title: 'Possession',
-                type: 'object',
-                schema: [
-                    { name: 'homeTeam', title: 'Home Team Possession', type: 'text' },
-                    { name: 'awayTeam', title: 'Away Team Possession', type: 'text' },
-                ],
-            },
-            {
-                name: 'shots',
-                title: 'Shots',
-                type: 'object',
-                schema: [
-                    { name: 'homeTeam', title: 'Home Team Shots', type: 'number' },
-                    { name: 'awayTeam', title: 'Away Team Shots', type: 'number' },
-                ],
-            },
-            {
-                name: 'shotsOnTarget',
-                title: 'Shots on Target',
-                type: 'object',
-                schema: [
-                    { name: 'homeTeam', title: 'Home Team Shots on Target', type: 'number' },
-                    { name: 'awayTeam', title: 'Away Team Shots on Target', type: 'number' },
-                ],
-            },
-            {
-                name: 'fouls',
-                title: 'Fouls',
-                type: 'object',
-                schema: [
-                    { name: 'homeTeam', title: 'Home Team Fouls', type: 'number' },
-                    { name: 'awayTeam', title: 'Away Team Fouls', type: 'number' },
-                ],
-            },
-            {
-                name: 'corners',
-                title: 'Corners',
-                type: 'object',
-                schema: [
-                    { name: 'homeTeam', title: 'Home Team Corners', type: 'number' },
-                    { name: 'awayTeam', title: 'Away Team Corners', type: 'number' },
-                ],
-            },
-            {
-                name: 'offsides',
-                title: 'Offsides',
-                type: 'object',
-                schema: [
-                    { name: 'homeTeam', title: 'Home Team Offsides', type: 'number' },
-                    { name: 'awayTeam', title: 'Away Team Offsides', type: 'number' },
-                ],
-            },
 
-            { name: 'weatherConditions', title: 'Weather Conditions', type: 'text' },
-            { name: 'notableEvents', title: 'Notable Events', type: 'tags', itemType: 'text' },
-            { name: 'durationMinutes', title: 'Duration (Minutes)', type: 'number' },
-            { name: 'venue', title: 'Venue', type: 'text' },
-            {
-                name: 'matchOfficials',
-                title: 'Match Officials',
-                type: 'object',
-                schema: [
-                    { name: 'role', title: 'Match Official Role', type: 'text' },
-                    { name: 'official', title: 'Match Official', type: 'text' },
-                ],
-            },
-            {
-                name: 'injuries',
-                title: 'Injuries',
-                type: 'object',
-                schema: [
-                    { name: 'player', title: 'Injured Player', type: 'text' },
-                    { name: 'description', title: 'Injury Description', type: 'text' },
-                    { name: 'minute', title: 'Injury Minute', type: 'number' },
-                ],
-            },
-            { name: 'complaints', title: 'Complaints', type: 'list', itemType: 'textarea' },
-        ],
-    },
 
     {
         path: "teams",
@@ -555,7 +384,6 @@ export const AdminResources = [
             { name: "name", title: "Team Name", type: "text" },
             { name: 'players', title: 'Players', type: 'tags' },
             { name: "coach", title: "team coach", type: "text" },
-            { name: "homeVenue", title: "homeVenue", type: "text" },
 
         ],
     },
@@ -568,28 +396,37 @@ export const AdminResources = [
         menu: { name: "Match Management", icon: FaFootballBall },
         steps: [
             {
+                title: "Enter match title",
+                fields: [
+                    {
+                        name: "matchTitle",
+                        type: "text",
+                        placeholder: "enter match title"
+
+                    },
+                ]
+            },
+            {
                 title: "Select Home Team",
                 fields: [
                     {
                         name: "homeTeam",
-                        type: "apiselect",
-                        displayKey: "name",
-                        placeholder: "home team",
-                        dataSource: "https://refs-29ss.onrender.com/teams?returnFields=name"
+                        type: "select",
+                        dataSource: "https://refs-29ss.onrender.com/teams",
+                        displayKey: "name"
                     },
-                ],
+                ]
             },
             {
                 title: "Select Away Team",
                 fields: [
                     {
                         name: "awayTeam",
-                        type: "apiselect",
-                        displayKey: "name",
-                        placeholder: "home team",
-                        dataSource: "https://refs-29ss.onrender.com/teams?returnFields=name"
+                        type: "select",
+                        dataSource: "https://refs-29ss.onrender.com/teams",
+                        displayKey: "name"
                     },
-                ],
+                ]
             },
             {
                 title: "Select Match date",
@@ -597,6 +434,18 @@ export const AdminResources = [
                     {
                         name: "date",
                         type: "date",
+                    },
+                ],
+            },
+
+            {
+                title: "Select Referee",
+                fields: [
+                    {
+                        name: "referee",
+                        type: "select",
+                        dataSource: "https://refs-29ss.onrender.com/users?role=referee",
+                        displayKey: "fullname"
                     },
                 ],
             },
@@ -616,35 +465,90 @@ export const AdminResources = [
                     },
                 ],
             },
-            {
-                title: "Enter match venue",
-                fields: [
-                    {
-                        name: "venue",
-                        type: "text",
-                        placeholder: "enter match venue",
-                    },
-                ],
-            },
+
         ],
         successMessage: "success!",
         successPath: "all matches",
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
         path: "all matches",
         dataSource: "https://refs-29ss.onrender.com/matches",
         icon: FaGolfBall,
         sidePanel: false,
-        type: "crudGrid",
-        displayComponent: "GridCard1",
-        add: true,
+        type: "crud",
         edit: true,
         view: true,
         delete: true,
+        hasInjectible: true,
+        InjectibleResourceQueryField: "matchTitle",
+        InjectibleResources: [{
+            path: "match report",
+            dataSource: "https://refs-29ss.onrender.com/match-reports/6562b90798b40bdeca9f4002",
+            type: "matchreport",
+            addResource: true,
+            icon: BsGraphUp,
+            add: true,
+            edit: true,
+            view: true,
+            delete: true,
+            schema: [
+                { name: "homeTeamGoals", title: "home team goals", type: "number" },
+                { name: "awayTeamGoals", title: "away team goals", type: "number" },
+                { name: "homeTeamPossession", title: "home team possession", type: "number" },
+                { name: "awayTeamPossession", title: "away team possession", type: "number" },
+                { name: "homeTeamShots", title: "home team shots", type: "number" },
+                { name: "awayTeamShots", title: "away team shots", type: "number" },
+                { name: "homeTeamFouls", title: "home team fouls", type: "number" },
+                { name: "awayTeamFouls", title: "away team fouls", type: "number" },
+                { name: "homeTeamCorners", title: "away team corners", type: "number" },
+                { name: "awayTeamCorners", title: "away team corners", type: "number" },
+                { name: "homeTeamOffsides", title: "home team offsides", type: "number" },
+                { name: "awayTeamOffsides", title: "away team offsides", type: "number" },
+                {
+                    name: "weatherConditions", title: "weather conditions", type: "select", options: [
+                        { label: "Rainy", value: "Rainy" },
+                        { label: "Cloudy", value: "Cloudy" },
+                        { label: "Cold", value: "Cold" },
+                        { label: "Hot", value: "Hot" },]
+                },
 
+                { name: "notableEvents", title: "notable events", type: "tags" },
+                { name: "durationMinutes", title: "duration minutes", type: "number" },
+                { name: "summary", title: "match summary", type: "richtextarea" },
+            ]
+
+
+        },
+        {
+            path: "match complaints",
+            dataSource: "https://refs-29ss.onrender.com/complaints?matchTitle=6562b90798b40bdeca9f4002",
+            type: "matchcomplaint",
+            addResource: true,
+            InjectibleResourceQueryField: "matchTitle",
+            icon: BsBookmarkDash,
+        },
+        ],
         menu: { name: "Match Management", icon: FaFootballBall },
         schema: [
-
+            { name: "id", type: "id", title: "" },
             { name: "homeTeam", title: "Home Team", type: "text" },
             { name: "awayTeam", title: "Away Team", type: "text" },
             {
@@ -656,27 +560,51 @@ export const AdminResources = [
                     { label: "Cancelled", value: "Cencelled" }
                 ]
             },
-            { name: "venue", title: "Venue", type: "text" },
         ],
     },
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
         path: "profile",
-        dataSource: "https://refs-29ss.onrender.com/users",
-
+        dataSource: "https://refs-29ss.onrender.com/user",
         icon: FaUserCog,
         sidePanel: false,
         type: "singleton",
-        queryField: "_id",
-        queryValue: localStorage.getItem("id"),
-
+        menu: { name: "Settings", icon: FaCogs },
         schema: [
             { name: "Image", title: "Image", type: "file" },
-            { name: "username", title: "Username", type: "text" },
+            { name: "fullname", title: "fullname", type: "text" },
             { name: "email", title: "Email", type: "text" },
-            { name: "firstName", title: "First Name", type: "text" },
-            { name: "lastName", title: "Last Name", type: "text" },
             { name: "dateOfBirth", title: "Date Of Birth", type: "date" },
+        ],
+    },
+    {
+        path: "change password",
+        dataSource: "https://refs-29ss.onrender.com/user",
+        icon: RiLockPasswordFill,
+        sidePanel: false,
+        type: "singleton",
+        menu: { name: "Settings", icon: FaCogs },
+        schema: [
+
+            { name: "cpassword", title: "enter current password", type: "password" },
+            { name: "newpassword", title: "new password", type: "password" },
+            { name: "confirmnewpass", title: "confirm new password", type: "password" },
         ],
     },
 ];
